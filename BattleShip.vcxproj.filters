@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\main">
+      <UniqueIdentifier>{9263fcaa-b6d5-4edc-b159-4950721301e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\scene">
+      <UniqueIdentifier>{c0e1e780-4a0f-4896-92db-b12a9c383a7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\input">
+      <UniqueIdentifier>{d8c8c03a-4edf-47ea-ad48-471d8b1b661c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common">
+      <UniqueIdentifier>{8fed913e-f994-44c7-8063-17d5933e07d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\fps">
+      <UniqueIdentifier>{44ab8928-8997-4bf2-8fe2-63dfd68c1f16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\define">
+      <UniqueIdentifier>{a18aa580-c982-40da-a95c-a60c4aa7deca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\Error">
+      <UniqueIdentifier>{fe355d44-87c1-46ff-936e-58bbb6f048c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\commonAbstruct">
+      <UniqueIdentifier>{36daaaf9-7808-4786-85eb-55ed33fa049c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp">
+      <Filter>ソース ファイル\main</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SystemMain.cpp">
+      <Filter>ソース ファイル\main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\SystemMain.h">
+      <Filter>ソース ファイル\main</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

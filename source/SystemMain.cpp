@@ -1,7 +1,7 @@
 #include <DxLib.h>
 #include "SystemMain.h"
 #include "Define.h"
-#include "Looper.h"
+#include "SceneManager.h"
 
 /*!
 * @brief DXライブラリやゲームの初期処理
@@ -12,7 +12,7 @@ bool SystemMain::initialize() const
 	SetWindowSizeChangeEnableFlag(TRUE);						     //ウィンドウサイズを自由に変更できるようにする
 	SetOutApplicationLogValidFlag(FALSE);						     //ログ出力しない
 	SetFullScreenResolutionMode(DX_FSRESOLUTIONMODE_DESKTOP);	     //フルスクリーン時に縦横比を維持する
-	SetWindowText("AdvencherAlpha");							     //ウィンドウタイトルを付ける
+	SetWindowText("SimulationAlpha");							     //ウィンドウタイトルを付ける
 	ChangeWindowMode(TRUE);										     //ウィンドウモードに変更
 																	 //SetWindowSizeExtendRate(1.0);						         //ウィンドウサイズを変更したい時はここに倍率を指定する
 	const int COLOR_BIT = 32;									     //色のbit数。通常32で良いが軽くするなら16にする
@@ -37,9 +37,9 @@ void SystemMain::finalize() const
 */
 void SystemMain::main() const
 {
-	Looper looper;
+	SceneManager sceneManager;
 	while (!ScreenFlip() && !ProcessMessage() && !ClearDrawScreen()) {
-		if (!looper.loop()) {
+		if (!sceneManager.loop()) {
 			break;
 		}
 	}

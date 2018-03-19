@@ -15,9 +15,6 @@
     <Filter Include="ソース ファイル\scene">
       <UniqueIdentifier>{c0e1e780-4a0f-4896-92db-b12a9c383a7e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\input">
-      <UniqueIdentifier>{d8c8c03a-4edf-47ea-ad48-471d8b1b661c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\common">
       <UniqueIdentifier>{8fed913e-f994-44c7-8063-17d5933e07d5}</UniqueIdentifier>
     </Filter>
@@ -30,8 +27,23 @@
     <Filter Include="ソース ファイル\common\Error">
       <UniqueIdentifier>{fe355d44-87c1-46ff-936e-58bbb6f048c3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\common\commonAbstruct">
+    <Filter Include="ソース ファイル\common\commonAbstract">
       <UniqueIdentifier>{36daaaf9-7808-4786-85eb-55ed33fa049c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\utils">
+      <UniqueIdentifier>{88e0f54f-ad32-42ef-8271-60ada0de2101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes">
+      <UniqueIdentifier>{d754f5e8-813c-481b-80d3-b451d7bb2d10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\singleton">
+      <UniqueIdentifier>{656278c3-5870-455f-9c4a-ac237fab764b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\singleton\input">
+      <UniqueIdentifier>{d8c8c03a-4edf-47ea-ad48-471d8b1b661c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\singleton\resource">
+      <UniqueIdentifier>{7eaf0df5-5397-486d-90c7-b14c304a042c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,10 +53,91 @@
     <ClCompile Include="source\SystemMain.cpp">
       <Filter>ソース ファイル\main</Filter>
     </ClCompile>
+    <ClCompile Include="source\SceneManager.cpp">
+      <Filter>ソース ファイル\main</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Define.cpp">
+      <Filter>ソース ファイル\common\define</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AbstractScene.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Parameter.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Keyboard.cpp">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Pad.cpp">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Fps.cpp">
+      <Filter>ソース ファイル\common\fps</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CalcUtils.cpp">
+      <Filter>ソース ファイル\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SampleScene1.cpp">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SampleScene2.cpp">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Error.cpp">
+      <Filter>ソース ファイル\common\Error</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\SystemMain.h">
       <Filter>ソース ファイル\main</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SceneManager.h">
+      <Filter>ソース ファイル\main</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Singleton.h">
+      <Filter>ソース ファイル\common\commonAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Task.h">
+      <Filter>ソース ファイル\common\commonAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Define.h">
+      <Filter>ソース ファイル\common\define</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AbstractScene.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnumScene.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Parameter.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SceneChanger.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Keyboard.h">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Pad.h">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Fps.h">
+      <Filter>ソース ファイル\common\fps</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CalcUtils.h">
+      <Filter>ソース ファイル\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SampleScene1.h">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\SampleScene2.h">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Error.h">
+      <Filter>ソース ファイル\common\Error</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Macro.h">
+      <Filter>ソース ファイル\common\Error</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

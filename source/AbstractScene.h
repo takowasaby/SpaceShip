@@ -2,7 +2,6 @@
 
 #include "SceneChanger.h"
 #include "Parameter.h"
-
 class SceneChanger;
 
 class AbstractScene {

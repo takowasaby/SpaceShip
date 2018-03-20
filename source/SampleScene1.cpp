@@ -16,13 +16,14 @@ SampleScene1::SampleScene1(SceneChanger * impl, const Parameter & parameter) :
 //	if (_label == Parameter::Error) {
 //		ERR("“n‚³‚ê‚½ƒŒƒxƒ‹‚ª•s³‚Å‚·");
 //	}
-	soundSet();
-	graphSet();
+    graphSet();
+    soundSet();
 	printfDx("%d, %d", handle, handle2);
 }
 
 void SampleScene1::update()
 {
+    std::string fname = this->getFilename();
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_C) != 0 && Keyboard::getIns()->getPressingCount(KEY_INPUT_1) == 1) {
 		Parameter parameter;
 		parameter.set(ParameterTagLabel, 1);
@@ -53,11 +54,12 @@ void SampleScene1::update()
 		parameter.set(ParameterTagLabel, 0);
 		const bool stackClear = true;
 		_implSceneChanged->onSceneChanged(eScene::Sample2, parameter, stackClear);
-		
-		StopSoundMem(Sound::getIns()->getBgmHandle(&filename));
+
+        //printfDx("%s", filename.c_str());
+        printfDx("%s", fname.c_str());
+		StopSoundMem(Sound::getIns()->getBgmHandle(&fname));
 		return;
 	}
-
 }
 
 void SampleScene1::draw() const
@@ -69,9 +71,11 @@ void SampleScene1::draw() const
 
 void SampleScene1::soundSet()
 {
+    Sound::getIns()->lightReset();
 	filename = "resource/music/1.wav";
-	handle = Sound::getIns()->getBgmHandle(&filename, float(0.5));
-	PlaySoundMem(handle, DX_PLAYTYPE_LOOP);
+	handle = Sound::getIns()->getBgmHandle(&filename, float(1.0));
+    printfDx("Sound:%d\n", PlaySoundMem(handle, DX_PLAYTYPE_LOOP));
+
 
 	printfDx("\n%d\n",CheckSoundMem(handle));
 }

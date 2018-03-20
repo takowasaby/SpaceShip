@@ -5,6 +5,7 @@
 #include "Keyboard.h"
 #include "Pad.h"
 #include "Macro.h"
+#include "Sound.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ SceneManager::SceneManager()
 {
 	Parameter parameter;
 	_sceneStack.push(make_shared<SampleScene1>(this, parameter));
+	Sound::getIns()->setVolume(255, 255);
 }
 
 bool SceneManager::loop()
@@ -24,8 +26,8 @@ bool SceneManager::loop()
 	_fps.update();                  //ê›íËÇµÇΩFPSÇ…Ç»ÇÈÇÊÇ§Ç…ë“ã@
 
 	//
-	clsDx();
-	printfDx("%d", _sceneStack.size());
+//	clsDx();
+//	printfDx("%d", _sceneStack.size());
 	//
 
 	return true;

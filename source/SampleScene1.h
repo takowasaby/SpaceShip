@@ -1,6 +1,7 @@
 #pragma once
 
 #include "AbstractScene.h"
+#include <string>
 
 class SampleScene1 : public AbstractScene
 {
@@ -11,6 +12,10 @@ public:
 	virtual ~SampleScene1() = default;
 	void update() override;
 	void draw() const override;
+	void soundSet();
+	void graphSet();
 private:
 	int _label;
+	std::string filename;
+	int handle, handle2;
 };

@@ -6,6 +6,7 @@
 #include "Macro.h"
 #include "Sound.h"
 #include "Graphics.h"
+#include "GameEffect.h"
 
 const char* SampleScene1::ParameterTagLabel = "ParameterTagLabel";
 
@@ -18,6 +19,7 @@ SampleScene1::SampleScene1(SceneChanger * impl, const Parameter & parameter) :
 //	}
     graphSet();
     soundSet();
+	effectSet();
 	printfDx("%d, %d", handle, handle2);
 }
 
@@ -71,9 +73,10 @@ void SampleScene1::draw() const
 
 void SampleScene1::soundSet()
 {
-    Sound::getIns()->lightReset();
 	filename = "resource/music/1.wav";
-	handle = Sound::getIns()->getBgmHandle(&filename, float(1.0));
+	printfDx("%s", filename.c_str());
+
+	handle = Sound::getIns()->getBgmHandle(&filename, float(0.5));
     printfDx("Sound:%d\n", PlaySoundMem(handle, DX_PLAYTYPE_LOOP));
 
 
@@ -82,8 +85,16 @@ void SampleScene1::soundSet()
 
 void SampleScene1::graphSet()
 {
-	filename = "resource/image/1.png";
+	filename = "resource/effect/SampleEffect.png";
 	handle2 = Graphics::getIns()->getHandle(&filename);
 
 	printfDx("\n%d\n", CheckSoundMem(handle));
+}
+
+void SampleScene1::effectSet()
+{
+	std::string effectFileName = "resource/effect/SampleEffect.png";
+	std::string unitName = "Sample";
+	GameEffect::getIns()->addEffectList(&unitName, &effectFileName, 13, 0, 192, 192);
+	GameEffect::getIns()->makeEffect(&unitName, 200, 200, 360);
 }

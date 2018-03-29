@@ -64,6 +64,7 @@ int GameEffectUnit::getHandle()
 void GameEffectUnit::setGraphics(std::string * filename)
 {
     _handle = Graphics::getIns()->setHandle(filename);
+	printfDx("<%d>", _handle);
     _graphicFilename = *filename;
     Graphics::getIns()->getSize(&_graphicSizeX, &_graphicSizeY, _handle);
     checkReady();
@@ -102,7 +103,7 @@ void GameEffectUnit::reset()
 
 void GameEffectUnit::getGraphicRect(int * x, int * y, int * width, int * height, int *position, int curTime, int totalTime)
 {
-    int pos = ((int)(_effectFrameNumber* curTime / totalTime) + _effectStartFrame) * _effectFrameSizeWidth;
+    int pos = ((int)(_effectFrameNumber* curTime / totalTime) + _effectStartFrame) * (_effectFrameSizeWidth);
     *position = pos;
     *x = pos % _graphicSizeX;
     *y = (int)(pos / _graphicSizeX) * _effectFrameSizeHeight;

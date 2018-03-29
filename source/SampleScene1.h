@@ -14,6 +14,7 @@ public:
 	void draw() const override;
 	void soundSet();
 	void graphSet();
+	void effectSet();
     std::string getFilename() { return filename; }
 private:
 	int _label;

@@ -64,12 +64,17 @@ int Graphics::setHandle(std::string * filename, std::string * url)
 
 int Graphics::setHandle(std::string * filename, std::string * url, int priority)
 {
-	int ret = LoadGraph(filename->c_str());
+	int ret = LoadGraph(url->c_str());
 	if (priority == 0)
 		_graphics[*filename] = ret;
 	else if (priority == 1)
 		_priorityGraphics[*filename] = ret;
 	return ret;
+}
+
+void Graphics::getSize(int * graphicSizeX, int * graphicSizeY, int handle)
+{
+	GetGraphSize(handle, graphicSizeX, graphicSizeY);
 }
 
 void Graphics::lightReset()

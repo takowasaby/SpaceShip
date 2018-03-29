@@ -7,6 +7,7 @@
 class GameEffectUnit
 {
     //エフェクトの種類だけこれを作成する。
+	//Frameは描画する画像のうちの一コマ分
 private:
     int _ready;
     int _handle;

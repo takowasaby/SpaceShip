@@ -22,8 +22,12 @@
     <ClCompile Include="source\AbstractScene.cpp" />
     <ClCompile Include="source\CalcUtils.cpp" />
     <ClCompile Include="source\Define.cpp" />
+    <ClCompile Include="source\DummyScene.cpp" />
+    <ClCompile Include="source\EachEffect.cpp" />
     <ClCompile Include="source\Error.cpp" />
     <ClCompile Include="source\Fps.cpp" />
+    <ClCompile Include="source\GameEffect.cpp" />
+    <ClCompile Include="source\GameEffectUnit.cpp" />
     <ClCompile Include="source\Graphics.cpp" />
     <ClCompile Include="source\Keyboard.cpp" />
     <ClCompile Include="source\main.cpp" />
@@ -39,9 +43,13 @@
     <ClInclude Include="source\AbstractScene.h" />
     <ClInclude Include="source\CalcUtils.h" />
     <ClInclude Include="source\Define.h" />
+    <ClInclude Include="source\DummyScene.h" />
+    <ClInclude Include="source\EachEffect.h" />
     <ClInclude Include="source\EnumScene.h" />
     <ClInclude Include="source\Error.h" />
     <ClInclude Include="source\Fps.h" />
+    <ClInclude Include="source\GameEffect.h" />
+    <ClInclude Include="source\GameEffectUnit.h" />
     <ClInclude Include="source\Graphics.h" />
     <ClInclude Include="source\Keyboard.h" />
     <ClInclude Include="source\Macro.h" />
@@ -60,7 +68,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}</ProjectGuid>
     <RootNamespace>BattleShip</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

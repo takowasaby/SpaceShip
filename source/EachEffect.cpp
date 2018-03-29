@@ -4,17 +4,26 @@
 
 EachEffect::EachEffect()
 {
+	/*
     _currentTime = 0;
     _beforePos = -1;
     int x, y, w, h, p;
     _unit->getGraphicRect(&x, &y, &w, &h, &p, _currentTime, 10);
     _rwidth = w;
     _rheight = h;
+	*/
 }
 
 void EachEffect::setGameEffectUnit(GameEffectUnit * inputUnit)
 {
     _unit = inputUnit;
+	_currentTime = 0;
+	_beforePos = -1;
+	int x, y, w, h, p;
+	_unit->getGraphicRect(&x, &y, &w, &h, &p, _currentTime, 10);
+	_rwidth = w;
+	_rheight = h;
+	_unit->checkReady();
 }
 
 void EachEffect::setRepeatFlag(int rflag)
@@ -58,6 +67,7 @@ bool EachEffect::call()
         }
         else
         {
+			printfDx("<%d>", handle);
             printfDx("Cannot Read Unit Handle!\n");
         }
         _beforePos = p;

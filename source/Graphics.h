@@ -24,6 +24,7 @@ public:
 	int setHandle(std::string *filename, std::string *url);
 	int setHandle(std::string *filename, std::string *url, int priority);
 
+	void getSize(int *graphicSizeX, int *graphicSizeY, int handele);
 	void lightReset();//重要度の低いものだけリセットする(priority = 0)
 	void reset();//すべてのデータを消去する
 };

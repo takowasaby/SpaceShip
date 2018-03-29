@@ -21,6 +21,8 @@ private:
 	int _bgmVolume;		//BGMのボリューム(0～255)
 	int _seVolume;		//SEのボリューム(0～255)
 public:
+	//volumeCorrectionは個々のボリューム型への補正(0～1)
+	//priorityはハンドルの重要度(0,1)
 	int getBgmHandle(std::string *filename, int priority = -1);
 	int getBgmHandle(std::string *filename, float volumeCorrection, int priority = -1);
 	int setBgmHandle(std::string *filename, int priority = 0);

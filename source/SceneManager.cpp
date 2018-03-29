@@ -1,18 +1,20 @@
 #include "SceneManager.h"
 #include "SampleScene1.h"
 #include "SampleScene2.h"
+#include "DummyScene.h"
 #include "Error.h"
 #include "Keyboard.h"
 #include "Pad.h"
 #include "Macro.h"
 #include "Sound.h"
+#include "GameEffect.h"
 
 using namespace std;
 
 SceneManager::SceneManager()
 {
 	Parameter parameter;
-	_sceneStack.push(make_shared<SampleScene1>(this, parameter));
+	_sceneStack.push(make_shared<DummyScene>(this, parameter));
 	Sound::getIns()->setVolume(255, 255);
 }
 
@@ -24,6 +26,7 @@ bool SceneManager::loop()
 	_sceneStack.top()->draw();      //スタックのトップのシーンを描画
 //	_fps.draw();                    //FPSの表示
 	_fps.update();                  //設定したFPSになるように待機
+	GameEffect::getIns()->call();	//エフェクトクラスの更新
 
 	//
 //	clsDx();

@@ -12,9 +12,10 @@ class EachEffect;
 const unsigned int PLAY_ONCE = 1;
 const unsigned int PLAY_REPEAT = 2;
 
-class GameEffect
+class GameEffect : public Singleton<GameEffect>
 {
-    //エフェクトのサイズ、コマ間隔、ファイルの元の名前
+	GameEffect() = default;
+	friend Singleton< GameEffect >;   //エフェクトのサイズ、コマ間隔、ファイルの元の名前
     //一度流すだけかどうか、繰り返すのか
     //オプションとして、スタート地点とコマの数を指定できる
     //表示する位置の調整も可能
@@ -27,7 +28,7 @@ private:
     std::list<EachEffect> _staticEffect;//最初において置いたら切れるまで流れて勝手に消える
     std::map<std::string, EachEffect> _macros;
 public:
-    void call();
+    void call();//SceneManagerでループ毎に呼び出し
 
     int addEffectList(std::string *unitname, GameEffectUnit *unit);//0-miss, 1-success
     int addEffectList(

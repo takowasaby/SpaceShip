@@ -177,6 +177,7 @@ int GameEffect::makeMacro(std::string * unitname, std::string * macroname, int p
     ee.setTotalTime(totalTime);
     ee.setSize(width, height);
     ee.setRepeatFlag(repeatFlag);
+	ee.setRotation(rotation);
     _macros[*macroname] = ee;
     return 1;
 }

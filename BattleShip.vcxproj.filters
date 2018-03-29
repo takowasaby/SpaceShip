@@ -45,6 +45,9 @@
     <Filter Include="ソース ファイル\singleton\resource">
       <UniqueIdentifier>{7eaf0df5-5397-486d-90c7-b14c304a042c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\singleton\effect">
+      <UniqueIdentifier>{fc942cd5-e813-4605-a501-0d21fe675788}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -91,6 +94,18 @@
     </ClCompile>
     <ClCompile Include="source\Graphics.cpp">
       <Filter>ソース ファイル\singleton\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DummyScene.cpp">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EachEffect.cpp">
+      <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameEffect.cpp">
+      <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GameEffectUnit.cpp">
+      <Filter>ソース ファイル\singleton\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +165,18 @@
     </ClInclude>
     <ClInclude Include="source\Graphics.h">
       <Filter>ソース ファイル\singleton\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="source\DummyScene.h">
+      <Filter>ソース ファイル\GameScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EachEffect.h">
+      <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GameEffect.h">
+      <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="source\GameEffectUnit.h">
+      <Filter>ソース ファイル\singleton\effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -38,8 +38,27 @@ int Graphics::getHandle(std::string * filename, int priority)
 	return setHandle(filename, priority);
 }
 
+int Graphics::checkHandle(std::string *filename, int priority)
+{
+    if (priority == 0)
+    {
+        auto itr = _graphics.find(*filename);
+        if (itr == _graphics.end())
+            return false;
+    }
+    else
+    {
+        auto itr = _priorityGraphics.find(*filename);
+        if (itr == _priorityGraphics.end())
+            return false;
+    }
+    return true;
+}
+
 int Graphics::setHandle(std::string * filename)
 {
+    if (checkHandle(filename))
+        return _graphics[*filename];
 	int ret = LoadGraph(filename->c_str());
 	_graphics[*filename] = ret;
 	return ret;
@@ -47,6 +66,13 @@ int Graphics::setHandle(std::string * filename)
 
 int Graphics::setHandle(std::string * filename, int priority)
 {
+    if (checkHandle(filename, priority))
+    {
+        if (priority == 0)
+            return _graphics[*filename];
+        else
+            return _priorityGraphics[*filename];
+    }
 	int ret = LoadGraph(filename->c_str());
 	if (priority == 0)
 		_graphics[*filename] = ret;
@@ -57,6 +83,8 @@ int Graphics::setHandle(std::string * filename, int priority)
 
 int Graphics::setHandle(std::string * filename, std::string * url)
 {
+    if (checkHandle(filename))
+        return _graphics[*filename];
 	int ret = LoadGraph(url->c_str());
 	_graphics[*filename] = ret;
 	return ret;
@@ -64,6 +92,13 @@ int Graphics::setHandle(std::string * filename, std::string * url)
 
 int Graphics::setHandle(std::string * filename, std::string * url, int priority)
 {
+    if (checkHandle(filename, priority))
+    {
+        if (priority == 0)
+            return _graphics[*filename];
+        else
+            return _priorityGraphics[*filename];
+    }
 	int ret = LoadGraph(url->c_str());
 	if (priority == 0)
 		_graphics[*filename] = ret;

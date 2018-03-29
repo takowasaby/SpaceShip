@@ -5,7 +5,8 @@ GameEffectUnit::GameEffectUnit():
     _effectFrameSizeWidth(0),
     _effectFrameSizeHeight(0),
     _effectStartFrame(0),
-    _ready(0)
+    _ready(0),
+    _handle(0)
 {
 }
 
@@ -45,7 +46,8 @@ int GameEffectUnit::checkReady()
     if (_ready == 1)
         return 1;
     if (_effectFrameSizeWidth != 0 &&
-        _effectFrameSizeHeight != 0 
+        _effectFrameSizeHeight != 0 &&
+        _handle != 0
         )
     {
         _ready = 1;
@@ -58,6 +60,7 @@ int GameEffectUnit::getHandle()
 {
     if (!_ready)
         return -1;
+    printfDx("Return handle is %d\n", _handle);
     return _handle;
 }
 
@@ -103,15 +106,15 @@ void GameEffectUnit::reset()
 
 void GameEffectUnit::getGraphicRect(int * x, int * y, int * width, int * height, int *position, int curTime, int totalTime)
 {
-    int pos = ((int)(_effectFrameNumber* curTime / totalTime) + _effectStartFrame) * (_effectFrameSizeWidth);
+    int pos = ((_effectFrameNumber* curTime / totalTime) + _effectStartFrame);
     *position = pos;
+    pos *= _effectFrameSizeWidth;
     *x = pos % _graphicSizeX;
-    *y = (int)(pos / _graphicSizeX) * _effectFrameSizeHeight;
+    *y = ((int)(pos / _graphicSizeX)) * _effectFrameSizeHeight;
     *width  = _effectFrameSizeWidth;
     *height = _effectFrameSizeHeight;
 }
 
 GameEffectUnit::~GameEffectUnit()
 {
-    DeleteGraph(_handle);
 }

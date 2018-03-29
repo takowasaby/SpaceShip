@@ -87,6 +87,9 @@ void SampleScene1::graphSet()
 {
 	filename = "resource/effect/SampleEffect.png";
 	handle2 = Graphics::getIns()->getHandle(&filename);
+    Graphics::getIns()->reset();
+    handle2 = Graphics::getIns()->getHandle(&filename);
+    printfDx("handle2:%d\n", handle2);
 
 	printfDx("\n%d\n", CheckSoundMem(handle));
 }
@@ -95,6 +98,7 @@ void SampleScene1::effectSet()
 {
 	std::string effectFileName = "resource/effect/SampleEffect.png";
 	std::string unitName = "Sample";
-	GameEffect::getIns()->addEffectList(&unitName, &effectFileName, 13, 0, 192, 192);
-	GameEffect::getIns()->makeEffect(&unitName, 200, 200, 360);
+	GameEffect::getIns()->addEffectList(&unitName, &effectFileName, 13, 0, 5, 3);
+	GameEffect::getIns()->makeEffect(&unitName, 200, 200, 30);
+    GameEffect::getIns()->makeEffect(&unitName, 400, 200, 60);
 }

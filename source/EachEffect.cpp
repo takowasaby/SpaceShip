@@ -4,14 +4,10 @@
 
 EachEffect::EachEffect()
 {
-	/*
     _currentTime = 0;
     _beforePos = -1;
-    int x, y, w, h, p;
-    _unit->getGraphicRect(&x, &y, &w, &h, &p, _currentTime, 10);
-    _rwidth = w;
-    _rheight = h;
-	*/
+    _repeatFlag = 0;
+    _derivationHandle = -1;
 }
 
 void EachEffect::setGameEffectUnit(GameEffectUnit * inputUnit)
@@ -23,6 +19,8 @@ void EachEffect::setGameEffectUnit(GameEffectUnit * inputUnit)
 	_unit->getGraphicRect(&x, &y, &w, &h, &p, _currentTime, 10);
 	_rwidth = w;
 	_rheight = h;
+    _width = 1.0;
+    _height = 1.0;
 	_unit->checkReady();
 }
 
@@ -59,11 +57,13 @@ bool EachEffect::call()
     _unit->getGraphicRect(&x, &y, &w, &h, &p, _currentTime, _totalTime);
     if (p != _beforePos)
     {
-        if (_beforePos != -1)
+        if (_beforePos != -1 && _derivationHandle != -1)
             DeleteGraph(_derivationHandle);
         if ((handle = _unit->getHandle()) != -1)
         {
+            //printfDx("DrawAnswer:%d\n",DrawGraph(x, y, handle, TRUE));
             _derivationHandle = DerivationGraph(x, y, w, h, handle);
+            printfDx("<%d>\n", _derivationHandle);
         }
         else
         {
@@ -85,19 +85,24 @@ bool EachEffect::call()
 
 void EachEffect::draw()
 {
-    DrawRotaGraph3(
-        _posx,
-        _posy,
-        _rwidth / 2,
-        _rheight / 2,
-        _width,
-        _height,
-        _rotation,
-        _derivationHandle,
-        TRUE
-    );
+    if (_derivationHandle != -1)
+    {
+        DrawRotaGraph3(
+            _posx,
+            _posy,
+            _rwidth / 2,
+            _rheight / 2,
+            _width,
+            _height,
+            _rotation,
+            _derivationHandle,
+            TRUE
+        );
+    }
 }
 
 EachEffect::~EachEffect()
 {
+    if (_beforePos != -1)
+        DeleteGraph(_derivationHandle);
 }

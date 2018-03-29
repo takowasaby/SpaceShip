@@ -2,18 +2,22 @@
 
 void GameEffect::call()
 {
-    for (auto itr = _changableEffect.begin(); itr != _changableEffect.end(); itr++)
+    for (auto itr = _changableEffect.begin(); itr != _changableEffect.end();itr++)
     {
         if (!itr->second.call())
         {
-            _changableEffect.erase(itr);
+            itr = _changableEffect.erase(itr);
+            if (itr == _changableEffect.end())
+                break;
         }
     }
-    for (auto itr = _staticEffect.begin(); itr != _staticEffect.end(); itr++)
+    for (auto itr = _staticEffect.begin(); itr != _staticEffect.end();itr++)
     {
         if (!itr->call())
         {
-            _staticEffect.erase(itr);
+            itr = _staticEffect.erase(itr);
+            if (itr == _staticEffect.end())
+                break;
         }
     }
 }

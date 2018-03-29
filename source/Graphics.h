@@ -16,6 +16,8 @@ private:
 	std::map<std::string, int> _priorityGraphics;//‘S‘Ì‚ªI‚í‚é‚Ü‚Å‚ÍÁ‚³‚ê‚È‚¢‚±‚Æ‚ª‘O’ñ
 	int _debug;
 public:
+    int checkHandle(std::string *filename,int priority = 0);
+
 	int getHandle(std::string *filename);
 	int getHandle(std::string *filename, int priority);
 

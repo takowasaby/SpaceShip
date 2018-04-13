@@ -20,7 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\AbstractScene.cpp" />
+    <ClCompile Include="source\BattleBoardManager.cpp" />
+    <ClCompile Include="source\BattleBoardScene.cpp" />
+    <ClCompile Include="source\BitUtils.cpp" />
+    <ClCompile Include="source\BoardObject.cpp" />
     <ClCompile Include="source\CalcUtils.cpp" />
+    <ClCompile Include="source\CQuadCell.cpp" />
+    <ClCompile Include="source\CQuadTree.cpp" />
     <ClCompile Include="source\Define.cpp" />
     <ClCompile Include="source\DummyScene.cpp" />
     <ClCompile Include="source\EachEffect.cpp" />
@@ -38,10 +44,17 @@
     <ClCompile Include="source\SceneManager.cpp" />
     <ClCompile Include="source\Sound.cpp" />
     <ClCompile Include="source\SystemMain.cpp" />
+    <ClCompile Include="source\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AbstractScene.h" />
+    <ClInclude Include="source\BattleBoardManager.h" />
+    <ClInclude Include="source\BattleBoardScene.h" />
+    <ClInclude Include="source\BitUtils.h" />
+    <ClInclude Include="source\BoardObject.h" />
     <ClInclude Include="source\CalcUtils.h" />
+    <ClInclude Include="source\CQuadCell.h" />
+    <ClInclude Include="source\CQuadTree.h" />
     <ClInclude Include="source\Define.h" />
     <ClInclude Include="source\DummyScene.h" />
     <ClInclude Include="source\EachEffect.h" />
@@ -53,6 +66,7 @@
     <ClInclude Include="source\Graphics.h" />
     <ClInclude Include="source\Keyboard.h" />
     <ClInclude Include="source\Macro.h" />
+    <ClInclude Include="source\ObjectCallBackListener.h" />
     <ClInclude Include="source\Pad.h" />
     <ClInclude Include="source\Parameter.h" />
     <ClInclude Include="source\SampleScene1.h" />
@@ -63,6 +77,7 @@
     <ClInclude Include="source\Sound.h" />
     <ClInclude Include="source\SystemMain.h" />
     <ClInclude Include="source\Task.h" />
+    <ClInclude Include="source\Vector2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

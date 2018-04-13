@@ -15,14 +15,17 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x64.ActiveCfg = Debug|x64
 		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x64.Build.0 = Debug|x64
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x86.ActiveCfg = Debug|Win32
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x86.Build.0 = Debug|Win32
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x64.ActiveCfg = Release|x64
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x64.Build.0 = Release|x64
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x86.ActiveCfg = Release|Win32
-		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x86.Build.0 = Release|Win32
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x86.ActiveCfg = Debug|x64
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Debug|x86.Build.0 = Debug|x64
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x64.ActiveCfg = Debug|x64
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x64.Build.0 = Debug|x64
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x86.ActiveCfg = Debug|x64
+		{E7CC2A63-0B66-46B2-A19B-3F86C2EEDAE1}.Release|x86.Build.0 = Debug|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {222422ED-C8A4-48BC-AFC9-93CAF01E50A6}
 	EndGlobalSection
 EndGlobal

@@ -48,6 +48,21 @@
     <Filter Include="ソース ファイル\singleton\effect">
       <UniqueIdentifier>{fc942cd5-e813-4605-a501-0d21fe675788}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameScenes\BattleBoardScene">
+      <UniqueIdentifier>{006a67cf-d750-4e14-ae24-d266299ce870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\BattleBoardScene\judge">
+      <UniqueIdentifier>{d513c583-80c8-44ff-9220-e7f508b167ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\BattleBoardScene\object">
+      <UniqueIdentifier>{b0fea6e3-1b1b-4146-afd9-db19a5bcf682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\vector2">
+      <UniqueIdentifier>{a873fefc-3c16-4b7e-a8a7-8dce84d12c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\BattleBoardScene\CQuadTree">
+      <UniqueIdentifier>{ab8dc7c5-8bd4-4f1e-a0a4-3050cc4b1912}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -106,6 +121,27 @@
     </ClCompile>
     <ClCompile Include="source\GameEffectUnit.cpp">
       <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BattleBoardScene.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BattleBoardManager.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BoardObject.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Vector2.cpp">
+      <Filter>ソース ファイル\common\vector2</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CQuadCell.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CQuadTree.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BitUtils.cpp">
+      <Filter>ソース ファイル\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +213,30 @@
     </ClInclude>
     <ClInclude Include="source\GameEffectUnit.h">
       <Filter>ソース ファイル\singleton\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BattleBoardScene.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BattleBoardManager.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BoardObject.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Vector2.h">
+      <Filter>ソース ファイル\common\vector2</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectCallBackListener.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CQuadCell.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CQuadTree.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="source\BitUtils.h">
+      <Filter>ソース ファイル\utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -25,8 +25,8 @@
     <ClCompile Include="source\BitUtils.cpp" />
     <ClCompile Include="source\BoardObject.cpp" />
     <ClCompile Include="source\CalcUtils.cpp" />
-    <ClCompile Include="source\CQuadCell.cpp" />
     <ClCompile Include="source\CQuadTree.cpp" />
+    <ClCompile Include="source\CQuadTreeManager.cpp" />
     <ClCompile Include="source\Define.cpp" />
     <ClCompile Include="source\DummyScene.cpp" />
     <ClCompile Include="source\EachEffect.cpp" />
@@ -53,8 +53,8 @@
     <ClInclude Include="source\BitUtils.h" />
     <ClInclude Include="source\BoardObject.h" />
     <ClInclude Include="source\CalcUtils.h" />
-    <ClInclude Include="source\CQuadCell.h" />
     <ClInclude Include="source\CQuadTree.h" />
+    <ClInclude Include="source\CQuadTreeManager.h" />
     <ClInclude Include="source\Define.h" />
     <ClInclude Include="source\DummyScene.h" />
     <ClInclude Include="source\EachEffect.h" />

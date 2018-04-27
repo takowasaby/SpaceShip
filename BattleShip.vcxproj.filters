@@ -134,14 +134,14 @@
     <ClCompile Include="source\Vector2.cpp">
       <Filter>ソース ファイル\common\vector2</Filter>
     </ClCompile>
-    <ClCompile Include="source\CQuadCell.cpp">
-      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
-    </ClCompile>
     <ClCompile Include="source\CQuadTree.cpp">
       <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
     </ClCompile>
     <ClCompile Include="source\BitUtils.cpp">
       <Filter>ソース ファイル\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CQuadTreeManager.cpp">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,14 +229,14 @@
     <ClInclude Include="source\ObjectCallBackListener.h">
       <Filter>ソース ファイル\GameScenes\BattleBoardScene</Filter>
     </ClInclude>
-    <ClInclude Include="source\CQuadCell.h">
-      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
-    </ClInclude>
     <ClInclude Include="source\CQuadTree.h">
       <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
     </ClInclude>
     <ClInclude Include="source\BitUtils.h">
       <Filter>ソース ファイル\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CQuadTreeManager.h">
+      <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

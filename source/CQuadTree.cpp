@@ -1,13 +1,16 @@
 #include "CQuadTree.h"
 #include "Macro.h"
 #include <algorithm>
+#include <cmath>
+
 
 CQuadTree::CQuadTree(unsigned int level, float left, float top, float right, float bottom)
 {
 	if (level >= CQUADTREE_MAXLEVEL) ERR("ïsê≥Ç»4ï™ñÿê[ìxÇ≈Ç∑");
 
-	for (int i = 0; i < CQUADTREE_MAXLEVEL; i++) {
-		_numberToLiner[i] = (_numberToLiner[i - 1] - 1) / 3;
+	_numberToLiner[0] = 1;
+	for (int i = 1; i < CQUADTREE_MAXLEVEL + 1; i++) {
+		_numberToLiner[i] = _numberToLiner[i - 1] + pow(4, i);
 	}
 
 	_level = level;
@@ -15,14 +18,14 @@ CQuadTree::CQuadTree(unsigned int level, float left, float top, float right, flo
 	_leftTop = Vector2(left, top);
 	_unitSize = _spaceSize / (1 << _level);
 
-	_dwCellNum = (_numberToLiner[level + 1] - 1) / 3;
+	_dwCellNum = _numberToLiner[level];
 	_cells.resize(_dwCellNum);
 
 //	ObjectForTree oft;
 //	*(oft._cell).erase(oft._cellNum);
 }
 
-void CQuadTree::sddObject(std::shared_ptr<BoardObject> spOBJ)
+void CQuadTree::addObject(std::shared_ptr<BoardObject> spOBJ)
 {
 	std::shared_ptr<ObjectForTree> oft = std::make_shared<ObjectForTree>();
 	oft->_object = spOBJ;
@@ -35,10 +38,35 @@ void CQuadTree::sddObject(std::shared_ptr<BoardObject> spOBJ)
 	_ofts.push_back(oft);
 }
 
+std::size_t CQuadTree::getCellLength(DWORD n)
+{
+	return _cells[n].size();
+}
+
+std::list< std::shared_ptr <ObjectForTree> >::iterator CQuadTree::getCellBegin(DWORD n)
+{
+	return _cells[n].begin();
+}
+
+std::list< std::shared_ptr <ObjectForTree> >::iterator CQuadTree::getCellEnd(DWORD n)
+{
+	return _cells[n].end();
+}
+
+int CQuadTree::getNumberToLiner(int i)
+{
+	return _numberToLiner[i];
+}
+
+DWORD CQuadTree::getCellNum()
+{
+	return _dwCellNum;
+}
+
 void CQuadTree::update()
 {
 	registCheck();
-	collisionCheck();
+//	collisionCheck();
 }
 
 DWORD CQuadTree::getMortonNumber(Vector2 leftTop, Vector2 rightBottom) const
@@ -54,7 +82,7 @@ DWORD CQuadTree::getMortonNumber(Vector2 leftTop, Vector2 rightBottom) const
 	}
 
 	DWORD spaceNum = RB >> (hiLevel * 2);
-	DWORD addNum = (_numberToLiner[_level - hiLevel] - 1) / 3;
+	DWORD addNum = _numberToLiner[_level - hiLevel];
 	spaceNum += addNum;
 
 	if (spaceNum > _dwCellNum) return 0xffffffff;
@@ -83,14 +111,15 @@ void CQuadTree::registCheck()
 			oft->_object->center() + Vector2(oft->_object->radius(), oft->_object->radius())
 		);
 		if (oft->_cell != elem) {
-			removeFromCell(oft);
-			regist(elem, oft);
+			_cells[oft->_cell].erase(oft->_cellNum);
 		}
 	});
-}
 
-void CQuadTree::collisionCheck()
-{
+	std::for_each(_cells.begin(), _cells.end(), [](std::list<std::shared_ptr<ObjectForTree>> ofts) {
+		for(auto itr = ofts.begin(); itr != ofts.end(); itr++) {
+			(*itr)->_cellNum = itr;
+		}
+	});
 }
 
 bool CQuadTree::registNewObject(float left, float top, float right, float bottom, std::shared_ptr<ObjectForTree> spOFT)
@@ -109,10 +138,10 @@ bool CQuadTree::regist(DWORD elem, std::shared_ptr<ObjectForTree> spOFT)
 	}
 	return false;
 }
-
+/*
 void CQuadTree::removeFromCell(std::shared_ptr<ObjectForTree> oft)
 {
 	std::size_t cell = oft->_cell;
-	_cells[cell].erase(oft->_cellNum);
-	std::for_each(oft->_cellNum, _cells[cell].end(), [](std::shared_ptr<ObjectForTree> cellOft) {cellOft->_cellNum--; });
-}
+	auto it = _cells[cell].erase(oft->_cellNum);
+	std::for_each(it, _cells[cell].end(), [](std::shared_ptr<ObjectForTree> cellOft) {cellOft->_cellNum--; });
+}*/

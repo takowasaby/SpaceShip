@@ -1,0 +1,8 @@
+body
+wing
+top
+engine
+missilesilo
+gun
+missile
+ballet

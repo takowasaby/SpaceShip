@@ -11,7 +11,7 @@ public:
 		Vector2 velocity,
 		int graphicHandle,
 		float direction,
-		char * campID,
+		const char * campID,
 		int CanExistTime
 	) = 0;
 	virtual void departObject(unsigned int num) = 0;

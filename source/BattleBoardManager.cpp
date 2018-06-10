@@ -3,13 +3,15 @@
 
 using namespace std;
 
-BattleBoardManager::BattleBoardManager()
+BattleBoardManager::BattleBoardManager() :
+	_cQuadTreeManager()
 {
 }
 
-void BattleBoardManager::addObject(Vector2 center, Vector2 velocity, int graphicHandle, float direction, char * campID, int CanExistTime)
+void BattleBoardManager::addObject(Vector2 center, Vector2 velocity, int graphicHandle, float direction, const char * campID, int CanExistTime)
 {
 	_boardObjects.push_back(make_shared<BoardObject>(center, velocity, graphicHandle, direction, campID, CanExistTime, _boardObjects.size(), this));
+	_cQuadTreeManager.addObject(_boardObjects.back());
 }
 
 void BattleBoardManager::departObject(unsigned int num)
@@ -23,6 +25,7 @@ void BattleBoardManager::update()
 {
 	for_each(_boardObjects.begin(), _boardObjects.end(), 
 		[](shared_ptr<BoardObject> object) { object->update(); });
+	_cQuadTreeManager.update();
 }
 
 void BattleBoardManager::draw() const

@@ -35,7 +35,7 @@ void CQuadTree::addObject(std::shared_ptr<BoardObject> spOBJ)
 		spOBJ->center().x() + spOBJ->radius(),
 		spOBJ->center().y() + spOBJ->radius(),
 		oft);
-	_ofts.push_back(oft);
+	//_ofts.push_back(oft);
 }
 
 std::size_t CQuadTree::getCellLength(DWORD n)
@@ -66,6 +66,7 @@ DWORD CQuadTree::getCellNum()
 void CQuadTree::update()
 {
 	registCheck();
+	registWillAddOfts();
 //	collisionCheck();
 }
 
@@ -104,19 +105,33 @@ DWORD CQuadTree::getPointElem(Vector2 position) const
 
 void CQuadTree::registCheck()
 {
-	std::for_each(_ofts.begin(), _ofts.end(), [this](std::shared_ptr<ObjectForTree> oft)
+	std::for_each(_cells.begin(), _cells.end(), [this](std::list< std::shared_ptr <ObjectForTree> > cell)
 	{
-		DWORD elem = getMortonNumber(
-			oft->_object->center() - Vector2(oft->_object->radius(), oft->_object->radius()),
-			oft->_object->center() + Vector2(oft->_object->radius(), oft->_object->radius())
-		);
-		if (oft->_cell != elem) {
-			_cells[oft->_cell].erase(oft->_cellNum);
-		}
+		std::for_each(cell.begin(), cell.end(), [this](std::shared_ptr<ObjectForTree> oft)
+		{
+			DWORD elem = getMortonNumber(
+				oft->_object->center() - Vector2(oft->_object->radius(), oft->_object->radius()),
+				oft->_object->center() + Vector2(oft->_object->radius(), oft->_object->radius())
+			);
+			if (oft->_cell != elem) {
+				_cells[oft->_cell].erase(oft->_cellNum);
+				_willAddOfts.push_back(oft);
+				oft->_cell = elem;
+			}
+		});
 	});
+}
+
+void CQuadTree::registWillAddOfts()
+{
+	std::for_each(_willAddOfts.begin(), _willAddOfts.end(), [this](std::shared_ptr<ObjectForTree> oft)
+	{
+		_cells[oft->_cell].push_back(oft);
+	});
+	_willAddOfts.clear();
 
 	std::for_each(_cells.begin(), _cells.end(), [](std::list<std::shared_ptr<ObjectForTree>> ofts) {
-		for(auto itr = ofts.begin(); itr != ofts.end(); itr++) {
+		for (auto itr = ofts.begin(); itr != ofts.end(); itr++) {
 			(*itr)->_cellNum = itr;
 		}
 	});

@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include "SampleScene1.h"
 #include "SampleScene2.h"
+#include "BattleBoardScene.h"
 #include "DummyScene.h"
 #include "Error.h"
 #include "Keyboard.h"
@@ -49,6 +50,9 @@ void SceneManager::onSceneChanged(const eScene scene, const Parameter & paramete
 		break;
 	case Sample2:
 		_sceneStack.push(make_shared<SampleScene2>(this, parameter));
+		break;
+	case BattleBoard:
+		_sceneStack.push(make_shared<BattleBoardScene>(this, parameter));
 		break;
 	default:
 		ERR("‚ ‚é‚Í‚¸‚Ì‚È‚¢ƒV[ƒ“‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");

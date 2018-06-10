@@ -40,14 +40,16 @@ private:
 	unsigned int _level;
 	DWORD _dwCellNum;
 
-	std::vector < std::shared_ptr<ObjectForTree> > _ofts;
+	//std::vector < std::shared_ptr<ObjectForTree> > _ofts;
 	std::vector< std::list< std::shared_ptr <ObjectForTree> > > _cells;
+	std::vector< std::shared_ptr <ObjectForTree> > _willAddOfts;
 
 	DWORD getMortonNumber(Vector2 leftTop, Vector2 rightBottom) const;
 	DWORD get2DMortonNumber(WORD x, WORD y) const;
 	DWORD getPointElem(Vector2 position) const;
 
 	void registCheck();
+	void registWillAddOfts();
 //	void collisionCheck();
 
 	bool registNewObject(float left, float top, float right, float bottom, std::shared_ptr<ObjectForTree> spOFT);

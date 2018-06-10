@@ -13,7 +13,7 @@ BoardObject::BoardObject(
 	Vector2 velocity,
 	int graphicHandle, 
 	float direction, 
-	char * campID, 
+	const char * campID, 
 	int CanExistTime,
 	int manageListNum,
 	ObjectCallBackListener* objectCallBackListener
@@ -36,6 +36,7 @@ bool BoardObject::update()
 	rotate();
 	if(_CanExistTime != -1) existJudge();
 	std::for_each(_module.begin(), _module.end(), [&](std::shared_ptr<AbstractModule> module) { module->update(); });
+
 	return true;
 }
 

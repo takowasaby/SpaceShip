@@ -22,7 +22,7 @@ public:
 		Vector2 velocity,
 		int GraphicHandle,
 		float direction,
-		char* campID,
+		const char* campID,
 		int CanExistTime,
 		int manageListNum,
 		ObjectCallBackListener* objectCallBackListener
@@ -76,7 +76,7 @@ protected:
 	int _graphicSizeX;		//‰æ‘œ‚Ì‰¡•[pixcel]
 	int _graphicSizeY;		//‰æ‘œ‚Ìc•[pixcel]
 
-	char* _campID;			//Š‘®‚·‚éw‰c‚ğ•\‚·ID
+	const char* _campID;			//Š‘®‚·‚éw‰c‚ğ•\‚·ID
 
 	int _existCount;		//‘¶İ‚µ‚Ä‚¢‚éŠÔ
 	int _CanExistTime;		//í“¬‰æ–Êã‚É‘¶İ‚Å‚«‚éflame’PˆÊ‚ÌŠÔi-1:–³ŒÀj

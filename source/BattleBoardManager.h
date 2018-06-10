@@ -1,6 +1,7 @@
 #pragma once
 #include "ObjectCallBackListener.h"
 #include "BoardObject.h"
+#include "CQuadTreeManager.h"
 #include <list>
 #include <memory>
 
@@ -14,7 +15,7 @@ public:
 		Vector2 velocity,
 		int graphicHandle,
 		float direction,
-		char * campID,
+		const char * campID,
 		int CanExistTime
 	);
 	virtual void departObject(unsigned int num) override;
@@ -24,4 +25,5 @@ public:
 
 private:
 	std::list<std::shared_ptr<BoardObject>> _boardObjects;
+	CQuadTreeManager _cQuadTreeManager;
 };

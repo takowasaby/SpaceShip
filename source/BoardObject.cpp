@@ -25,7 +25,8 @@ BoardObject::BoardObject(
 	_campID(campID),
 	_CanExistTime(CanExistTime),
 	_manageListNum(manageListNum),
-	_existCount(0)
+	_existCount(0),
+	_radius(0)
 {
 	Graphics::getIns()->getSize(&_graphicSizeX, &_graphicSizeY, _graphicHandle);
 }

@@ -2,7 +2,7 @@
 #include "Fps.h"
 #include "CalcUtils.h"
 
-const static int LIST_LEN_MAX = 120;	//最大120フレームで待機処理を計算する(2以上にする)
+const static int LIST_LEN_MAX = 5;	//最大120フレームで待機処理を計算する(2以上にする)
 const static int FPS = 60;				//FPS
 const static int UPINTVL = 60;			//60フレームに一度更新する
 
@@ -56,7 +56,7 @@ unsigned Fps::getWaitTime() const
 	if (len == 0) {
 		return 0;
 	}
-	int shouldTookTime = (int)(1000 / 60.f*(len));            //計算上かかるべき時間
+	int shouldTookTime = (int)(1000 / FPS);            //計算上かかるべき時間
 	int actuallyTookTime = GetNowCount() - _list.front();   //実際にかかった時間
 	int waitTime = shouldTookTime - actuallyTookTime;       //計算上かかるべき時間 - 実際にかかった時間　はすなわち待つべき時間
 	waitTime = waitTime > 0 ? waitTime : 0;

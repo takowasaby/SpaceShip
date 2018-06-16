@@ -10,7 +10,7 @@ CQuadTree::CQuadTree(unsigned int level, float left, float top, float right, flo
 
 	_numberToLiner[0] = 1;
 	for (int i = 1; i < CQUADTREE_MAXLEVEL + 1; i++) {
-		_numberToLiner[i] = _numberToLiner[i - 1] + pow(4, i);
+		_numberToLiner[i] = _numberToLiner[i - 1] + pow(4, i-1);
 	}
 
 	_level = level;
@@ -18,7 +18,7 @@ CQuadTree::CQuadTree(unsigned int level, float left, float top, float right, flo
 	_leftTop = Vector2(left, top);
 	_unitSize = _spaceSize / (1 << _level);
 
-	_dwCellNum = _numberToLiner[level];
+	_dwCellNum = _numberToLiner[level + 1];
 	_cells.resize(_dwCellNum);
 
 //	ObjectForTree oft;
@@ -78,8 +78,9 @@ DWORD CQuadTree::getMortonNumber(Vector2 leftTop, Vector2 rightBottom) const
 	DWORD def = LT ^ RB;
 	unsigned int hiLevel = 0;
 	for (unsigned int i = 0; i < _level; i++) {
-		def = (def >> 2) & 0x3;
-		if (def != 0) hiLevel = i + 1;
+		def >>= 2;
+		if ((def & 3) != 0)
+			hiLevel = i + 1;
 	}
 
 	DWORD spaceNum = RB >> (hiLevel * 2);
@@ -105,7 +106,7 @@ DWORD CQuadTree::getPointElem(Vector2 position) const
 
 void CQuadTree::registCheck()
 {
-	std::for_each(_cells.begin(), _cells.end(), [this](std::list< std::shared_ptr <ObjectForTree> > cell)
+	std::for_each(_cells.begin(), _cells.end(), [this](std::list< std::shared_ptr <ObjectForTree> >& cell)
 	{
 		std::for_each(cell.begin(), cell.end(), [this](std::shared_ptr<ObjectForTree> oft)
 		{
@@ -149,6 +150,7 @@ bool CQuadTree::regist(DWORD elem, std::shared_ptr<ObjectForTree> spOFT)
 		_cells[elem].push_back(spOFT);
 		spOFT->_cellNum = _cells[elem].end();
 		spOFT->_cell = elem;
+	//	printf("%d", elem);
 		return true;
 	}
 	return false;

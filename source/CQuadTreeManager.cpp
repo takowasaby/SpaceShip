@@ -32,7 +32,7 @@ void CQuadTreeManager::collisionJudge(DWORD judgeCellNum)
 			judgeOtherTreeCell(oft);
 		}
 	);
-	if (((judgeCellNum << 2) + 1) < _trees[0]->getCellNum()) {
+	if (((judgeCellNum << 2) + 4) < _trees[0]->getCellNum()) {
 		for (int i = 0; i < 4; i++) {
 			objectStackPush(judgeCellNum);
 			collisionJudge((judgeCellNum << 2) + 1 + i);
@@ -73,7 +73,8 @@ void CQuadTreeManager::judgeOtherTreeCell(std::shared_ptr<ObjectForTree> oft)
 
 void CQuadTreeManager::objectStackPop(DWORD n)
 {
-	for (int i = 0; i < _trees[0]->getCellLength(n); i++) _judgeObjectStack.pop_back();
+	for (int i = 0; i < _trees[0]->getCellLength(n); i++) 
+		_judgeObjectStack.pop_back();
 }
 
 void CQuadTreeManager::objectStackPush(DWORD n)

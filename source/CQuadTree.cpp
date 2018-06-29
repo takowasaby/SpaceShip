@@ -92,22 +92,12 @@ DWORD CQuadTree::getMortonNumber(Vector2 leftTop, Vector2 rightBottom) const
 	return spaceNum;
 }
 
-DWORD CQuadTree::get2DMortonNumber(WORD x, WORD y) const
-{
-	return (WORD) (BitUtils::BitSeparate32(x)) | (BitUtils::BitSeparate32(y) << 1);
-}
-
-DWORD CQuadTree::getPointElem(Vector2 position) const
-{
-	return get2DMortonNumber(
-		(WORD)((position.x() - _leftTop.x()) / _unitSize.x()), 
-		(WORD)((position.y() - _leftTop.y()) / _unitSize.y()));
-}
-
 void CQuadTree::registCheck()
 {
 	std::for_each(_cells.begin(), _cells.end(), [this](std::list< std::shared_ptr <ObjectForTree> >& cell)
 	{
+		if (!cell.size()) return;
+		/*
 		std::for_each(cell.begin(), cell.end(), [this](std::shared_ptr<ObjectForTree> oft)
 		{
 			DWORD elem = getMortonNumber(
@@ -120,6 +110,25 @@ void CQuadTree::registCheck()
 				oft->_cell = elem;
 			}
 		});
+		*/
+
+		auto removeFirst = std::remove_if(cell.begin(), cell.end(), [this](std::shared_ptr<ObjectForTree> oft)
+		{
+			DWORD elem = getMortonNumber(
+				oft->_object->center() - Vector2(oft->_object->radius(), oft->_object->radius()),
+				oft->_object->center() + Vector2(oft->_object->radius(), oft->_object->radius())
+			);
+			if (oft->_cell != elem) {
+				oft->_cell = elem;
+				return true;
+			}
+			return false;
+		});
+		std::for_each(removeFirst, cell.end(), [this](std::shared_ptr<ObjectForTree> oft)
+		{
+			_willAddOfts.push_back(oft);
+		});
+		cell.erase(removeFirst, cell.end());
 	});
 }
 
@@ -130,12 +139,13 @@ void CQuadTree::registWillAddOfts()
 		_cells[oft->_cell].push_back(oft);
 	});
 	_willAddOfts.clear();
-
+	/*
 	std::for_each(_cells.begin(), _cells.end(), [](std::list<std::shared_ptr<ObjectForTree>> ofts) {
 		for (auto itr = ofts.begin(); itr != ofts.end(); itr++) {
 			(*itr)->_cellNum = itr;
 		}
 	});
+	*/
 }
 
 bool CQuadTree::registNewObject(float left, float top, float right, float bottom, std::shared_ptr<ObjectForTree> spOFT)
@@ -148,7 +158,7 @@ bool CQuadTree::regist(DWORD elem, std::shared_ptr<ObjectForTree> spOFT)
 {
 	if (elem < _dwCellNum) {
 		_cells[elem].push_back(spOFT);
-		spOFT->_cellNum = _cells[elem].end();
+	//	spOFT->_cellNum = _cells[elem].end();
 		spOFT->_cell = elem;
 	//	printf("%d", elem);
 		return true;

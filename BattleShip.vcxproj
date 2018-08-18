@@ -37,6 +37,7 @@
     <ClCompile Include="source\Graphics.cpp" />
     <ClCompile Include="source\Keyboard.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Mouse.cpp" />
     <ClCompile Include="source\Pad.cpp" />
     <ClCompile Include="source\Parameter.cpp" />
     <ClCompile Include="source\SampleScene1.cpp" />
@@ -44,6 +45,7 @@
     <ClCompile Include="source\SceneManager.cpp" />
     <ClCompile Include="source\Sound.cpp" />
     <ClCompile Include="source\SystemMain.cpp" />
+    <ClCompile Include="source\TextHandle.cpp" />
     <ClCompile Include="source\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +68,7 @@
     <ClInclude Include="source\Graphics.h" />
     <ClInclude Include="source\Keyboard.h" />
     <ClInclude Include="source\Macro.h" />
+    <ClInclude Include="source\Mouse.h" />
     <ClInclude Include="source\ObjectCallBackListener.h" />
     <ClInclude Include="source\Pad.h" />
     <ClInclude Include="source\Parameter.h" />
@@ -77,6 +80,7 @@
     <ClInclude Include="source\Sound.h" />
     <ClInclude Include="source\SystemMain.h" />
     <ClInclude Include="source\Task.h" />
+    <ClInclude Include="source\TextHandle.h" />
     <ClInclude Include="source\Vector2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

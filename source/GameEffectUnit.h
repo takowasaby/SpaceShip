@@ -30,20 +30,20 @@ public:
         int column,
         int row,
         int EStartFrame,
-        std::string *filename,
-        std::string *url
+        const std::string& filename,
+        const std::string& url
         );
     void setALL(
         int EFrameNumber,
         int column,
         int row,
         int EStartFrame,
-        std::string *filename
+        const std::string& filename
     );
     int checkReady();
     int getHandle();
-    void setGraphics(std::string* filename);
-    void setGraphics(std::string* url, std::string* filename);
+    void setGraphics(const std::string& filename);
+    void setGraphics(const std::string& url, const std::string& filename);
     void setFrameSize(int width, int height);
     void setFrameShape(int column, int row);//横のマス数　縦のマス数
     void setFirstFramePosition(int firstFramePos);

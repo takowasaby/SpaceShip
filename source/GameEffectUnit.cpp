@@ -17,8 +17,8 @@ void GameEffectUnit::setALL(
     int column,
     int row,
     int EStartFrame,
-    std::string *filename,
-    std::string *url
+    const std::string& filename,
+    const std::string& url
 )
 {
     _effectFrameNumber = EFrameNumber;
@@ -32,7 +32,7 @@ void GameEffectUnit::setALL(
     int column,
     int row,
     int EStartFrame,
-    std::string * filename
+    const std::string& filename
 )
 {
     _effectFrameNumber = EFrameNumber;
@@ -64,20 +64,20 @@ int GameEffectUnit::getHandle()
     return _handle;
 }
 
-void GameEffectUnit::setGraphics(std::string * filename)
+void GameEffectUnit::setGraphics(const std::string& filename)
 {
     _handle = Graphics::getIns()->setHandle(filename);
 	printfDx("<%d>", _handle);
-    _graphicFilename = *filename;
+    _graphicFilename = filename;
     Graphics::getIns()->getSize(&_graphicSizeX, &_graphicSizeY, _handle);
     checkReady();
 }
 
 
-void GameEffectUnit::setGraphics(std::string * url, std::string * filename)
+void GameEffectUnit::setGraphics(const std::string& url, const std::string& filename)
 {
     _handle = Graphics::getIns()->setHandle(filename, url);
-    _graphicFilename = *filename;
+    _graphicFilename = filename;
     Graphics::getIns()->getSize(&_graphicSizeX, &_graphicSizeY, _handle);
     checkReady();
 }

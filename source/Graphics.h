@@ -16,15 +16,15 @@ private:
 	std::map<std::string, int> _priorityGraphics;//全体が終わるまでは消されないことが前提
 	int _debug;
 public:
-    int checkHandle(std::string *filename,int priority = 0);
+    int checkHandle(const std::string& filename,int priority = 0);
 
-	int getHandle(std::string *filename);
-	int getHandle(std::string *filename, int priority);
+	int getHandle(const std::string& filename);
+	int getHandle(const std::string& filename, int priority);
 
-	int setHandle(std::string *filename);
-	int setHandle(std::string *filename, int priority);
-	int setHandle(std::string *filename, std::string *url);
-	int setHandle(std::string *filename, std::string *url, int priority);
+	int setHandle(const std::string& filename);
+	int setHandle(const std::string& filename, int priority);
+	int setHandle(const std::string& filename, const std::string& url);
+	int setHandle(const std::string& filename, const std::string& url, int priority);
 
 	void getSize(int *graphicSizeX, int *graphicSizeY, int handele);
 	void lightReset();//重要度の低いものだけリセットする(priority = 0)

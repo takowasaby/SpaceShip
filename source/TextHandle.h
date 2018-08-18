@@ -13,15 +13,15 @@ private:
     std::map<std::string, std::string > _fonturl;
     std::map<std::string, int> _fonthandle;
 public:
-    int setFontUrl(std::string *name, std::string *url);//url‚Í–¼‘O‚Å‚à‚æ‚¢
-    int setHandle(std::string *name, int fontsize, int fontthick, int fonttype);
-    int setHandle(std::string *filename, std::string *name, int fontsize, int fontthick,int fonttype);
+    int setFontUrl(const std::string& name, const std::string& url);//url‚Í–¼‘O‚Å‚à‚æ‚¢
+    int setHandle(const std::string& name, int fontsize, int fontthick, int fonttype);
+    int setHandle(const std::string& filename, const std::string& name, int fontsize, int fontthick,int fonttype);
 
-    int getHandle(std::string *name, int fontsize);
-    int getHandle(std::string *name, int fontsize, int fontthick, int fonttype);
-    int getHandle(std::string *filename);
+    int getHandle(const std::string& name, int fontsize);
+    int getHandle(const std::string& name, int fontsize, int fontthick, int fonttype);
+    int getHandle(const std::string& filename);
 
     void initHandle();
-    void removeHandle(std::string *filename);
+    void removeHandle(const std::string& filename);
     ~TextHandle();
 };

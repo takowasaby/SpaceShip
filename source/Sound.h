@@ -23,19 +23,19 @@ private:
 public:
 	//volumeCorrectionは個々のボリューム型への補正(0～1)
 	//priorityはハンドルの重要度(0,1)
-	int getBgmHandle(std::string *filename, int priority = -1);
-	int getBgmHandle(std::string *filename, float volumeCorrection, int priority = -1);
-	int setBgmHandle(std::string *filename, int priority = 0);
-	int setBgmHandle(std::string *filename, std::string *url, int priority = 0);
-	int setBgmHandle(std::string *filename, float volumeCorrection, int priority = 0);
-	int setBgmHandle(std::string *filename, float volumeCorrection, std::string *url, int priority = 0);
+	int getBgmHandle(const std::string& filename, int priority = -1);
+	int getBgmHandle(const std::string& filename, float volumeCorrection, int priority = -1);
+	int setBgmHandle(const std::string& filename, int priority = 0);
+	int setBgmHandle(const std::string& filename, std::string *url, int priority = 0);
+	int setBgmHandle(const std::string& filename, float volumeCorrection, int priority = 0);
+	int setBgmHandle(const std::string& filename, float volumeCorrection, std::string *url, int priority = 0);
 
-	int getSeHandle(std::string *filename, int priority = -1);
-	int getSeHandle(std::string *filename, float volumeCorrection, int priority = -1);
-	int setSeHandle(std::string *filename, int priority = 0);
-	int setSeHandle(std::string *filename, std::string *url, int priority = 0);
-	int setSeHandle(std::string *filename, float volumeCorrection, int priority = 0);
-	int setSeHandle(std::string *filename, float volumeCorrection, std::string *url, int priority = 0);
+	int getSeHandle(const std::string& filename, int priority = -1);
+	int getSeHandle(const std::string& filename, float volumeCorrection, int priority = -1);
+	int setSeHandle(const std::string& filename, int priority = 0);
+	int setSeHandle(const std::string& filename, std::string *url, int priority = 0);
+	int setSeHandle(const std::string& filename, float volumeCorrection, int priority = 0);
+	int setSeHandle(const std::string& filename, float volumeCorrection, std::string *url, int priority = 0);
 
 	void lightReset();  //重要度の低いものだけリセットする(priority = 0)
 	void reset();		//すべてのデータを消去する 

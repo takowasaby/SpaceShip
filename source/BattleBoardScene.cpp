@@ -9,7 +9,7 @@ BattleBoardScene::BattleBoardScene(SceneChanger * impl, const Parameter & parame
 	_battleBoardManager.addObject(
 		Vector2(512,512),
 		Vector2(1, 1),
-		Graphics::getIns()->getHandle(&str),
+		Graphics::getIns()->getHandle(str),
 		0,
 		BoardObject::FRIEND_CAMP_ID,
 		-1

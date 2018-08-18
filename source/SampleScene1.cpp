@@ -48,7 +48,7 @@ void SampleScene1::update()
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_B) == 1) {
 		_implSceneChanged->onScenePoped();
 		
-		StopSoundMem(Sound::getIns()->getBgmHandle(&filename));
+		StopSoundMem(Sound::getIns()->getBgmHandle(filename));
 		return;
 	}
 	if (Keyboard::getIns()->getPressingCount(KEY_INPUT_R) == 1) {
@@ -59,7 +59,7 @@ void SampleScene1::update()
 
         //printfDx("%s", filename.c_str());
         printfDx("%s", fname.c_str());
-		StopSoundMem(Sound::getIns()->getBgmHandle(&fname));
+		StopSoundMem(Sound::getIns()->getBgmHandle(fname));
 		return;
 	}
 }
@@ -76,7 +76,7 @@ void SampleScene1::soundSet()
 	filename = "resource/music/1.wav";
 	printfDx("%s", filename.c_str());
 
-	handle = Sound::getIns()->getBgmHandle(&filename, float(0.5));
+	handle = Sound::getIns()->getBgmHandle(filename, float(0.5));
     printfDx("Sound:%d\n", PlaySoundMem(handle, DX_PLAYTYPE_LOOP));
 
 
@@ -86,9 +86,9 @@ void SampleScene1::soundSet()
 void SampleScene1::graphSet()
 {
 	filename = "resource/effect/SampleEffect.png";
-	handle2 = Graphics::getIns()->getHandle(&filename);
+	handle2 = Graphics::getIns()->getHandle(filename);
     Graphics::getIns()->reset();
-    handle2 = Graphics::getIns()->getHandle(&filename);
+    handle2 = Graphics::getIns()->getHandle(filename);
     printfDx("handle2:%d\n", handle2);
 
 	printfDx("\n%d\n", CheckSoundMem(handle));
@@ -98,7 +98,7 @@ void SampleScene1::effectSet()
 {
 	std::string effectFileName = "resource/effect/SampleEffect.png";
 	std::string unitName = "Sample";
-	GameEffect::getIns()->addEffectList(&unitName, &effectFileName, 13, 0, 5, 3);
-	GameEffect::getIns()->makeEffect(&unitName, 200, 200, 30);
-    GameEffect::getIns()->makeEffect(&unitName, 400, 200, 60);
+	GameEffect::getIns()->addEffectList(unitName, effectFileName, 13, 0, 5, 3);
+	GameEffect::getIns()->makeEffect(unitName, 200, 200, 30);
+    GameEffect::getIns()->makeEffect(unitName, 400, 200, 60);
 }

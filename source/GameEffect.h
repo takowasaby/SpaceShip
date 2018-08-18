@@ -30,38 +30,38 @@ private:
 public:
     void call();//SceneManagerÇ≈ÉãÅ[ÉvñàÇ…åƒÇ—èoÇµ
 
-    int addEffectList(std::string *unitname, GameEffectUnit *unit);//0-miss, 1-success
+    int addEffectList(const std::string& unitname, GameEffectUnit *unit);//0-miss, 1-success
     int addEffectList(
-        std::string *unitname,
-        std::string *filename,
-        std::string *url,
+        const std::string& unitname,
+        const std::string& filename,
+        const std::string& url,
         int frameNumber,
         int startFrame,
         int column,
         int row
     );
     int addEffectList(
-        std::string *unitname,
-        std::string *filename,
+        const std::string& unitname,
+        const std::string& filename,
         int frameNumber,
         int startFrame,
         int column,
         int row
     );
-    int makeEffect(std::string *unitname, int posx, int posy, int totalTime);
-    int makeEffect(std::string *unitname, int posx, int posy, int totalTime, int width, int height);
-    int makeEffect(std::string *unitname, std::string *effectname, int posx, int posy, int totalTime);
-    int makeEffect(std::string *unitname, std::string *effectname, int posx, int posy, int totalTime, int width, int height);
-    int makeEffect(std::string *unitname, std::string *effectname, int posx, int posy, int totalTime, int repeatFlag, int width, int height);
-    int makeEffect(std::string *unitname, std::string *effectname, int posx, int posy, int totalTime, int repeatFlag, int width, int height, float rotation);
-    void setEffectPos(std::string *effectname, int posx, int posy);
-    void setEffectRepeate(std::string *effectname, int repeateFlag);
-    void setEffectRotation(std::string *effectname, float rotation);
-    int makeEffect(std::string *effectname, std::string *macroname);
-    int makeEffect(std::string *macroname);
+    int makeEffect(const std::string& unitname, int posx, int posy, int totalTime);
+    int makeEffect(const std::string& unitname, int posx, int posy, int totalTime, int width, int height);
+    int makeEffect(const std::string& unitname, const std::string& effectname, int posx, int posy, int totalTime);
+    int makeEffect(const std::string& unitname, const std::string& effectname, int posx, int posy, int totalTime, int width, int height);
+    int makeEffect(const std::string& unitname, const std::string& effectname, int posx, int posy, int totalTime, int repeatFlag, int width, int height);
+    int makeEffect(const std::string& unitname, const std::string& effectname, int posx, int posy, int totalTime, int repeatFlag, int width, int height, float rotation);
+    void setEffectPos(const std::string& effectname, int posx, int posy);
+    void setEffectRepeate(const std::string& effectname, int repeateFlag);
+    void setEffectRotation(const std::string& effectname, float rotation);
+    int makeEffect(const std::string& effectname, const std::string& macroname);
+    int makeEffect(const std::string& macroname);
 
-    int makeMacro(std::string *unitname, std::string *macroname, int posx, int posy, int totalTime);
-    int makeMacro(std::string *unitname, std::string *macroname, int posx, int posy, int totalTime, int width, int height);
-    int makeMacro(std::string *unitname, std::string *macroname, int posx, int posy, int totalTime, int repeatFlag, int width, int height);
-    int makeMacro(std::string *unitname, std::string *macroname, int posx, int posy, int totalTime, int repeatFlag, int width, int height, float rotation);
+    int makeMacro(const std::string& unitname, const std::string& macroname, int posx, int posy, int totalTime);
+    int makeMacro(const std::string& unitname, const std::string& macroname, int posx, int posy, int totalTime, int width, int height);
+    int makeMacro(const std::string& unitname, const std::string& macroname, int posx, int posy, int totalTime, int repeatFlag, int width, int height);
+    int makeMacro(const std::string& unitname, const std::string& macroname, int posx, int posy, int totalTime, int repeatFlag, int width, int height, float rotation);
 };

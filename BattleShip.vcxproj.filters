@@ -143,6 +143,12 @@
     <ClCompile Include="source\CQuadTreeManager.cpp">
       <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
     </ClCompile>
+    <ClCompile Include="source\Mouse.cpp">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TextHandle.cpp">
+      <Filter>ソース ファイル\singleton\resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\SystemMain.h">
@@ -237,6 +243,12 @@
     </ClInclude>
     <ClInclude Include="source\CQuadTreeManager.h">
       <Filter>ソース ファイル\GameScenes\BattleBoardScene\CQuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Mouse.h">
+      <Filter>ソース ファイル\singleton\input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TextHandle.h">
+      <Filter>ソース ファイル\singleton\resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

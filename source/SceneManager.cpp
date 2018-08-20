@@ -2,6 +2,12 @@
 #include "SampleScene1.h"
 #include "SampleScene2.h"
 #include "BattleBoardScene.h"
+#include "ModeSelectScene.h"
+#include "CampaignMenuScene.h"
+#include "MotherBoardSelectScene.h"
+#include "EnemySelectScene.h"
+#include "TutorialModeSelectScene.h"
+#include "TItleScene.h"
 #include "DummyScene.h"
 #include "Error.h"
 #include "Keyboard.h"
@@ -60,6 +66,24 @@ void SceneManager::onSceneChanged(const eScene scene, const Parameter & paramete
 		break;
 	case BattleBoard:
 		_nextScene = make_unique<BattleBoardScene>(this, parameter);
+		break;
+	case ModeSelect:
+		_nextScene = make_unique<ModeSelectScene>(this, parameter);
+		break;
+	case EnemySelect:
+		_nextScene = make_unique<EnemySelectScene>(this, parameter);
+		break;
+	case CampaignMenu:
+		_nextScene = make_unique<CampaignMenuScene>(this, parameter);
+		break;
+	case MotherBoardSelect:
+		_nextScene = make_unique<MotherBoardSelectScene>(this, parameter);
+		break;
+	case TutorialModeSelect:
+		_nextScene = make_unique<TutorialModeSelectScene>(this, parameter);
+		break;
+	case Title:
+		_nextScene = make_unique<TitleScene>(this, parameter);
 		break;
 	default:
 		ERR("Ç†ÇÈÇÕÇ∏ÇÃÇ»Ç¢ÉVÅ[ÉìÇ™åƒÇŒÇÍÇ‹ÇµÇΩ");

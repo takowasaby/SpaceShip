@@ -63,6 +63,27 @@
     <Filter Include="ソース ファイル\GameScenes\BattleBoardScene\CQuadTree">
       <UniqueIdentifier>{ab8dc7c5-8bd4-4f1e-a0a4-3050cc4b1912}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\GameScenes\ModeSelectScene">
+      <UniqueIdentifier>{589505ee-345e-4f0c-8c62-186c036820f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\TutorialModeSelectScene">
+      <UniqueIdentifier>{66262079-728c-4c91-9e98-c96b6179ea4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\CampaignMenuScene">
+      <UniqueIdentifier>{29bd286e-6823-48ab-b264-5ce97b9ed1ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\MotherBoardSelectScene">
+      <UniqueIdentifier>{c78c69ae-640e-4d17-adbd-96cba5e50813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\EnemySelectScene">
+      <UniqueIdentifier>{a0815119-bc07-4414-b3bf-ea438cea86a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\GameScenes\TItleScene">
+      <UniqueIdentifier>{d70d412c-6b5c-4ccb-839b-1e491c3d2aa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\UI">
+      <UniqueIdentifier>{e230bb88-f8fe-4a57-aa2e-664191dd5b56}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -148,6 +169,33 @@
     </ClCompile>
     <ClCompile Include="source\TextHandle.cpp">
       <Filter>ソース ファイル\singleton\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Button.cpp">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ButtonDrawer.cpp">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Window.cpp">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ModeSelectScene.cpp">
+      <Filter>ソース ファイル\GameScenes\ModeSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CampaignMenuScene.cpp">
+      <Filter>ソース ファイル\GameScenes\CampaignMenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MotherBoardSelectScene.cpp">
+      <Filter>ソース ファイル\GameScenes\MotherBoardSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\EnemySelectScene.cpp">
+      <Filter>ソース ファイル\GameScenes\EnemySelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TutorialModeSelectScene.cpp">
+      <Filter>ソース ファイル\GameScenes\TutorialModeSelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TItleScene.cpp">
+      <Filter>ソース ファイル\GameScenes\TItleScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +297,39 @@
     </ClInclude>
     <ClInclude Include="source\TextHandle.h">
       <Filter>ソース ファイル\singleton\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ModeSelectScene.h">
+      <Filter>ソース ファイル\GameScenes\ModeSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\CampaignMenuScene.h">
+      <Filter>ソース ファイル\GameScenes\CampaignMenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\MotherBoardSelectScene.h">
+      <Filter>ソース ファイル\GameScenes\MotherBoardSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\EnemySelectScene.h">
+      <Filter>ソース ファイル\GameScenes\EnemySelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TutorialModeSelectScene.h">
+      <Filter>ソース ファイル\GameScenes\TutorialModeSelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TItleScene.h">
+      <Filter>ソース ファイル\GameScenes\TItleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Button.h">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ButtonDrawer.h">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UIInterface.h">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Window.h">
+      <Filter>ソース ファイル\common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\eButtonState.h">
+      <Filter>ソース ファイル\common\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

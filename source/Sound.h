@@ -26,16 +26,16 @@ public:
 	int getBgmHandle(const std::string& filename, int priority = -1);
 	int getBgmHandle(const std::string& filename, float volumeCorrection, int priority = -1);
 	int setBgmHandle(const std::string& filename, int priority = 0);
-	int setBgmHandle(const std::string& filename, std::string *url, int priority = 0);
+	int setBgmHandle(const std::string& filename, const std::string& url, int priority = 0);
 	int setBgmHandle(const std::string& filename, float volumeCorrection, int priority = 0);
-	int setBgmHandle(const std::string& filename, float volumeCorrection, std::string *url, int priority = 0);
+	int setBgmHandle(const std::string& filename, float volumeCorrection, const std::string& url, int priority = 0);
 
 	int getSeHandle(const std::string& filename, int priority = -1);
 	int getSeHandle(const std::string& filename, float volumeCorrection, int priority = -1);
 	int setSeHandle(const std::string& filename, int priority = 0);
-	int setSeHandle(const std::string& filename, std::string *url, int priority = 0);
+	int setSeHandle(const std::string& filename, const std::string& url, int priority = 0);
 	int setSeHandle(const std::string& filename, float volumeCorrection, int priority = 0);
-	int setSeHandle(const std::string& filename, float volumeCorrection, std::string *url, int priority = 0);
+	int setSeHandle(const std::string& filename, float volumeCorrection, const std::string& url, int priority = 0);
 
 	void lightReset();  //重要度の低いものだけリセットする(priority = 0)
 	void reset();		//すべてのデータを消去する 

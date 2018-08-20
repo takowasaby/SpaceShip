@@ -34,25 +34,32 @@ bool SceneManager::loop()
 //	printfDx("%d", _sceneStack.size());
 	//
 
+	if (_nextScene) {
+		_sceneStack.push(std::move(_nextScene));
+	}
+
+	if (_stackClear) {//スタッククリアなら
+		while (!_sceneStack.empty()) {//スタックを全部ポップする(スタックを空にする)
+			_sceneStack.pop();
+		}
+		_stackClear = false;
+	}
+
 	return true;
 }
 
 void SceneManager::onSceneChanged(const eScene scene, const Parameter & parameter, const bool stackClear)
 {
-	if (stackClear) {//スタッククリアなら
-		while (!_sceneStack.empty()) {//スタックを全部ポップする(スタックを空にする)
-			_sceneStack.pop();
-		}
-	}
+	_stackClear = stackClear;
 	switch (scene) {
 	case Sample1:
-		_sceneStack.push(make_shared<SampleScene1>(this, parameter));
+		_nextScene = make_unique<SampleScene1>(this, parameter);
 		break;
 	case Sample2:
-		_sceneStack.push(make_shared<SampleScene2>(this, parameter));
+		_nextScene = make_unique<SampleScene2>(this, parameter);
 		break;
 	case BattleBoard:
-		_sceneStack.push(make_shared<BattleBoardScene>(this, parameter));
+		_nextScene = make_unique<BattleBoardScene>(this, parameter);
 		break;
 	default:
 		ERR("あるはずのないシーンが呼ばれました");

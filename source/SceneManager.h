@@ -16,5 +16,7 @@ public:
 	void onScenePoped() override;
 private:
 	std::stack<std::shared_ptr<AbstractScene>> _sceneStack;
+	std::unique_ptr<AbstractScene> _nextScene;
+	bool _stackClear;
 	Fps _fps;
 };

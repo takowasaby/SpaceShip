@@ -10,6 +10,7 @@ int Sound::getBgmHandle(const std::string& filename, int priority)
 		auto itr = _bgm.find(filename);
 		if (itr != _bgm.end())
 		{
+			ChangeVolumeSoundMem(_bgmVolume, _bgm[filename]);
 			return _bgm[filename];
 		}
 	}
@@ -18,6 +19,7 @@ int Sound::getBgmHandle(const std::string& filename, int priority)
 		auto itr = _priorityBgm.find(filename);
 		if (itr != _priorityBgm.end())
 		{
+			ChangeVolumeSoundMem(_bgmVolume, _priorityBgm[filename]);
 			return _priorityBgm[filename];
 		}
 	}
@@ -58,7 +60,6 @@ int Sound::setBgmHandle(const std::string& filename, int priority)
 		return -1;
 	}
 	int ret = LoadSoundMem(filename.c_str());
-	ChangeVolumeSoundMem(_bgmVolume, ret);
 	if (priority == 0 || priority == -1)
 		_bgm[filename] = ret;
 	else if (priority == 1 || priority == -1)
@@ -66,17 +67,17 @@ int Sound::setBgmHandle(const std::string& filename, int priority)
 	return ret;
 }
 
-int Sound::setBgmHandle(const std::string& filename, std::string * url, int priority)
+int Sound::setBgmHandle(const std::string& filename, const std::string&  url, int priority)
 {
 	if (priority != -1 && priority != 0 && priority != 1) {
 		return -1;
 	}
-	int ret = LoadSoundMem(filename.c_str());
+	int ret = LoadSoundMem(url.c_str());
 	ChangeVolumeSoundMem(_bgmVolume, ret);
 	if (priority == 0 || priority == -1)
-		_bgm[*url] = ret;
+		_bgm[filename] = ret;
 	else if (priority == 1 || priority == -1)
-		_priorityBgm[*url] = ret;
+		_priorityBgm[filename] = ret;
 	return ret;
 }
 
@@ -94,17 +95,17 @@ int Sound::setBgmHandle(const std::string& filename, float volumeCorrection, int
 	return ret;
 }
 
-int Sound::setBgmHandle(const std::string& filename, float volumeCorrection, std::string * url, int priority)
+int Sound::setBgmHandle(const std::string& filename, float volumeCorrection, const std::string&  url, int priority)
 {
 	if (priority != -1 && priority != 0 && priority != 1 && (volumeCorrection < 0 || volumeCorrection > 1)) {
 		return -1;
 	}
-	int ret = LoadSoundMem(filename.c_str());
+	int ret = LoadSoundMem(url.c_str());
 	ChangeVolumeSoundMem(static_cast<int>(_bgmVolume * volumeCorrection), ret);
 	if (priority == 0 || priority == -1)
-		_bgm[*url] = ret;
+		_bgm[filename] = ret;
 	else if (priority == 1 || priority == -1)
-		_priorityBgm[*url] = ret;
+		_priorityBgm[filename] = ret;
 	return ret;
 }
 
@@ -174,17 +175,17 @@ int Sound::setSeHandle(const std::string& filename, int priority)
 	return ret;
 }
 
-int Sound::setSeHandle(const std::string& filename, std::string * url, int priority)
+int Sound::setSeHandle(const std::string& filename, const std::string&  url, int priority)
 {
 	if (priority != -1 && priority != 0 && priority != 1) {
 		return -1;
 	}
-	int ret = LoadSoundMem(filename.c_str());
+	int ret = LoadSoundMem(url.c_str());
 	ChangeVolumeSoundMem(_seVolume, ret);
 	if (priority == 0 || priority == -1)
-		_se[*url] = ret;
+		_se[filename] = ret;
 	else if (priority == 1 || priority == -1)
-		_prioritySe[*url] = ret;
+		_prioritySe[filename] = ret;
 	return ret;
 }
 
@@ -202,17 +203,17 @@ int Sound::setSeHandle(const std::string& filename, float volumeCorrection, int 
 	return ret;
 }
 
-int Sound::setSeHandle(const std::string& filename, float volumeCorrection, std::string * url, int priority)
+int Sound::setSeHandle(const std::string& filename, float volumeCorrection, const std::string&  url, int priority)
 {
 	if (priority != -1 && priority != 0 && priority != 1 && (volumeCorrection < 0 || volumeCorrection > 1)) {
 		return -1;
 	}
-	int ret = LoadSoundMem(filename.c_str());
+	int ret = LoadSoundMem(url.c_str());
 	ChangeVolumeSoundMem(static_cast<int>(_seVolume * volumeCorrection), ret);
 	if (priority == 0)
-		_se[*url] = ret;
+		_se[filename] = ret;
 	else if (priority == 1)
-		_prioritySe[*url] = ret;
+		_prioritySe[filename] = ret;
 	return ret;
 }
 

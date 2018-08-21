@@ -23,11 +23,6 @@ StringButtonDrawer::StringButtonDrawer(Vector2 leftUp, Vector2 size, const std::
 	}
 }
 
-StringButtonDrawer::~StringButtonDrawer()
-{
-	for (int i : _drawStringFont) DeleteFontToHandle(i);
-}
-
 void StringButtonDrawer::draw(eButtonState state) const
 {
 	DrawStringToHandle(
@@ -69,15 +64,10 @@ ImageButtonDrawer::ImageButtonDrawer(Vector2 leftUp, Vector2 size, int image) :
 	}
 }
 
-ImageButtonDrawer::~ImageButtonDrawer()
-{
-	for (int i : _images) DeleteGraph(i);
-}
-
 void ImageButtonDrawer::draw(eButtonState state) const
 {
 	Vector2 rightDown = _leftUp + _size;
-  DrawExtendGraph(
+	DrawExtendGraph(
 		static_cast<int>(_leftUp.x()),
 		static_cast<int>(_leftUp.y()),
 		static_cast<int>(rightDown.x()),

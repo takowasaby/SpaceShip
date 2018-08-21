@@ -5,7 +5,6 @@ class StringButtonDrawer : public Button::ButtonDrawerInterface {
 public:
 	explicit StringButtonDrawer(Vector2 leftUp, Vector2 size, const std::string& str, const std::array<unsigned, 4>& color, const std::array<int, 4>& font);
 	explicit StringButtonDrawer(Vector2 leftUp, Vector2 size, const std::string& str, unsigned color, int font);
-	~StringButtonDrawer();
 
 	void draw(eButtonState) const override;
 
@@ -23,7 +22,6 @@ class ImageButtonDrawer : public Button::ButtonDrawerInterface {
 public:
 	explicit  ImageButtonDrawer(Vector2 leftUp, Vector2 size, const std::array<int, 4>& image);
 	explicit  ImageButtonDrawer(Vector2 leftUp, Vector2 size, int image);
-	~ImageButtonDrawer();
 
 	void draw(eButtonState) const override;
 

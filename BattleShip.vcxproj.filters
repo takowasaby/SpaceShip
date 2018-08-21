@@ -197,6 +197,9 @@
     <ClCompile Include="source\TItleScene.cpp">
       <Filter>ソース ファイル\GameScenes\TItleScene</Filter>
     </ClCompile>
+    <ClCompile Include="source\LightningBackground.cpp">
+      <Filter>ソース ファイル\GameScenes\EnemySelectScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\SystemMain.h">
@@ -330,6 +333,9 @@
     </ClInclude>
     <ClInclude Include="source\eButtonState.h">
       <Filter>ソース ファイル\common\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LightningBackground.h">
+      <Filter>ソース ファイル\GameScenes\EnemySelectScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

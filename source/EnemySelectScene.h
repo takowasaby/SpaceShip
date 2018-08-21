@@ -3,8 +3,7 @@
 #include "AbstractScene.h"
 #include "Window.h"
 #include "Button.h"
-#include <memory>
-#include <vector>
+#include "LightningBackground.h"
 
 //タイトル > チュートリアル選択 > CPU敵艦選択
 class EnemySelectScene : public AbstractScene {
@@ -18,7 +17,12 @@ private:
 	             selectboxWindow,
 	             previewWindow;
 	Button prevButton, 
-	             nextButton,
-	             startSelectionButton,
-	             clearSelectionButton;
+	       nextButton,
+	       startSelectionButton,
+	       clearSelectionButton;
+
+	//気分で作った電気的なエフェクトと、それを無効化するボタン
+	LightningBackground lightningBg {};
+	Button removeLightningBgButton {"removeLightningBgButton", {520.f, 45.f}, {230.f, 80.f}};
+	bool isLightningBgUnabled {};
 };

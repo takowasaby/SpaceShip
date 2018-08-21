@@ -77,7 +77,7 @@ ImageButtonDrawer::~ImageButtonDrawer()
 void ImageButtonDrawer::draw(eButtonState state) const
 {
 	Vector2 rightDown = _leftUp + _size;
-	DrawExtendGraph(
+  DrawExtendGraph(
 		static_cast<int>(_leftUp.x()),
 		static_cast<int>(_leftUp.y()),
 		static_cast<int>(rightDown.x()),

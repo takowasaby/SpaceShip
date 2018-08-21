@@ -12,6 +12,7 @@
 #include "Error.h"
 #include "Keyboard.h"
 #include "Pad.h"
+#include "Mouse.h"
 #include "Macro.h"
 #include "Sound.h"
 #include "GameEffect.h"
@@ -28,6 +29,7 @@ SceneManager::SceneManager()
 bool SceneManager::loop()
 {
 	Keyboard::getIns()->update();   //キーボードの更新
+  Mouse::getIns()->update();      //マウスの更新
 	Pad::getIns()->update();        //ジョイパッドの更新
 	_sceneStack.top()->update();    //スタックのトップのシーンを更新
 	_sceneStack.top()->draw();      //スタックのトップのシーンを描画

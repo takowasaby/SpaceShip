@@ -14,6 +14,11 @@ public:
 	void update() override;
 	void draw() const override;
 private:
-  const Window background;
-  Button prevButton;
+	const Window backgroundWindow,
+	             selectboxWindow,
+	             previewWindow;
+	Button prevButton, 
+	             nextButton,
+	             startSelectionButton,
+	             clearSelectionButton;
 };

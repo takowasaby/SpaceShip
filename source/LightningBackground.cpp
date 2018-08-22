@@ -1,6 +1,3 @@
-#include "LightningBackground.h"
-#include <DxLib.h>
-#include "Define.h"
 #include <DxLib.h>
 #include <random>
 #include <functional>
@@ -9,6 +6,8 @@
 #include <cassert>
 #include <memory>
 
+#include "LightningBackground.h"
+#include "Define.h"
 using namespace std;
 
 

@@ -53,6 +53,8 @@ bool SceneManager::loop()
 		_stackClear = false;
 	}
 
+	if (_stackPop) _sceneStack.pop();
+
 	return true;
 }
 
@@ -96,6 +98,6 @@ void SceneManager::onSceneChanged(const eScene scene, const Parameter & paramete
 void SceneManager::onScenePoped()
 {
 	if (_sceneStack.size() > 1) {
-		_sceneStack.pop();
+		_stackPop = true;
 	}
 }

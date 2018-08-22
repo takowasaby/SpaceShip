@@ -53,8 +53,10 @@ bool SceneManager::loop()
 		_stackClear = false;
 	}
 
-	if (_stackPop) _sceneStack.pop();
-
+	if (_stackPop) {
+		_sceneStack.pop();
+		_stackPop = false;
+	}
 	return true;
 }
 

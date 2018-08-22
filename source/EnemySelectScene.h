@@ -15,7 +15,7 @@ public:
 	void update() override;
 	void draw() const override;
 private:
-	bool isSelectMode;
+	bool isSelectMode; //5つ選ぶ方
 
 	const Window backgroundWindow,
 	             selectboxWindow,
@@ -25,8 +25,8 @@ private:
 	       startSelectionButton,
 	       clearSelectionButton;
 
-	std::array<std::array<std::unique_ptr<Button>, 5>, 4> enemyListButton; //[x][y]
-	std::vector<std::pair<int, int>> selectedEnemyIds;
+	std::vector<std::vector<std::unique_ptr<Button>>> enemyListButtons; //[x][y]
+	std::vector<std::pair<int, int>> selectedEnemyPoss;
 
 
 	//気分で作った電気的なエフェクトと、それを無効化するボタン
@@ -34,4 +34,15 @@ private:
 	Button removeLightningBgButton {"removeLightningBgButton", {520.f, 45.f}, {230.f, 80.f}};
 	bool isLightningBgUnabled {};
 
+
+
+	void createEnemyListButtons();
+	void setButtonImages();
+	void updateButtons();
+	void doButtonEvents();
+	void doEnemyButtonEvent(int x, int y);
+	void drawWindows() const;
+	void drawButtons() const;
+	Vector2 calcEnemyButtonPos(int x, int y) const;
+	Vector2 calcEnemyButtonSize() const;
 };

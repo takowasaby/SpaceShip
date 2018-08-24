@@ -71,7 +71,7 @@ void EnemySelectScene::setButtonImages()
 		Graphics::getIns()->getHandle("resource/image/UI/g4.png"),
 		Graphics::getIns()->getHandle("resource/image/UI/g2.png"),
 		Graphics::getIns()->getHandle("resource/image/UI/g4.png"),
-		Graphics::getIns()->getHandle("resource/image/UI/g4.png")
+		Graphics::getIns()->getHandle("resource/image/enemy-select-scene/tmp-disabled-button.png")
 	};
 	prevButton.addDrawer(ButtonColor);
 	nextButton.addDrawer(ButtonColor);
@@ -101,6 +101,7 @@ EnemySelectScene::EnemySelectScene(SceneChanger * impl, const Parameter & parame
 	startSelectionButton {"startSelectionButton", StartSelection_Button_Pos, StartSelection_Button_Size},
 	clearSelectionButton {"clearSelectionButton", ClearSelection_Button_Pos, ClearSelection_Button_Size},
 
+	isClearSelectionButtonEnabled {false},
 	enemyListButtons {},
 	selectedEnemyPoss {}
 	
@@ -128,6 +129,29 @@ void EnemySelectScene::updateButtons()
 		lightningBg.update();
 	}
 }
+void EnemySelectScene::updateNextButtonEnableFlag()
+{
+	if (selectedEnemyPoss.size() < 5) {
+		nextButton.disable();
+		isNextButtonEnabled = false;
+	} else if (!isNextButtonEnabled) { //Button::enable()を連続して実行するとボタンがクリックできない
+		nextButton.enable();
+		isNextButtonEnabled = true;
+	}
+}
+
+void EnemySelectScene::updateClearSelectionButtonEnableFlag()
+{
+	if (selectedEnemyPoss.size() == 0) {
+		clearSelectionButton.disable();
+		isClearSelectionButtonEnabled = false;
+	} else if(!isClearSelectionButtonEnabled) { //Button::enable()を連続して実行するとボタンがクリックできない
+		clearSelectionButton.enable();
+		isClearSelectionButtonEnabled = true;
+	}
+}
+
+
 void EnemySelectScene::doButtonEvents()
 {
 	if (prevButton.pressUp()) {
@@ -188,6 +212,10 @@ void EnemySelectScene::doEnemyButtonEvent(int x, int y)
 
 void EnemySelectScene::update()
 {
+	//軽い処理なので毎フレーム実行しても問題ない
+	updateNextButtonEnableFlag();
+	updateClearSelectionButtonEnableFlag();
+
 	updateButtons();
 	doButtonEvents();
 }

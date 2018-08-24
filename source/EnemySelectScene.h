@@ -25,8 +25,12 @@ private:
 	       startSelectionButton,
 	       clearSelectionButton;
 
+	//ボタンが押された状態でButton::enable()を実行するとボタンが押されていない状態になってしまうことへの対策。
+	bool isClearSelectionButtonEnabled;
+	bool isNextButtonEnabled;
+
 	std::vector<std::vector<std::unique_ptr<Button>>> enemyListButtons; //[x][y]
-	std::vector<std::pair<int, int>> selectedEnemyPoss;
+	std::vector<std::pair<int, int>> selectedEnemyPoss; //値を変更するときはupdateClearSelectionButtonEnableFlag()を忘れずに。
 
 
 	//気分で作った電気的なエフェクトと、それを無効化するボタン
@@ -34,8 +38,8 @@ private:
 	Button removeLightningBgButton {"removeLightningBgButton", {520.f, 45.f}, {230.f, 80.f}};
 	bool isLightningBgUnabled {};
 
-
-
+	void updateNextButtonEnableFlag();
+	void updateClearSelectionButtonEnableFlag();
 	void createEnemyListButtons();
 	void setButtonImages();
 	void updateButtons();

@@ -111,12 +111,12 @@ void Button::update()
 	++_keepStateCount;
 
 	if (_buttonState == eButtonState::disable) return;
+	_beforeState = _buttonState;
+	_buttonState = decideButtonState();
 	if (_beforeState != _buttonState)
 	{
-		_beforeState = _buttonState;
 		_keepStateCount = 0;
 	}
-	_buttonState = decideButtonState();
 }
 
 void Button::draw() const

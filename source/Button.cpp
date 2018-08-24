@@ -4,20 +4,20 @@
 #include "Mouse.h"
 
 Button::Button(const std::string& name) :
+	UIInterface(name),
 	_buttonState(eButtonState::disable),
 	_keepStateCount(0),
-	_beforeState(eButtonState::disable),
-	_buttonName(name)
+	_beforeState(eButtonState::disable)
 {
 }
 
 Button::Button(const std::string& name, Vector2 leftUp, Vector2 size) :
+	UIInterface(name),
 	_buttonState(eButtonState::neutral),
 	_keepStateCount(0),
 	_beforeState(eButtonState::neutral),
 	_leftUp(leftUp),
-	_size(size),
-	_buttonName(name)
+	_size(size)
 {
 }
 
@@ -122,8 +122,10 @@ void Button::update()
 void Button::draw() const
 {
 	if (_window.get() != nullptr) _window->draw(_buttonState);
+	SetDrawArea(_leftUp.x(), _leftUp.y(), _leftUp.x() + _size.x(), _leftUp.y() + _size.y());
 	for(int i = 0, max = _drawers.size(); i < max; i++)
 		_drawers[i]->draw(_buttonState);
+	SetDrawAreaFull();
 }
 
 bool Button::pressDown() const
@@ -133,7 +135,7 @@ bool Button::pressDown() const
 
 bool Button::pressUp() const
 {
-	return _buttonState != eButtonState::press && _beforeState == eButtonState::press;
+	return _buttonState != eButtonState::press && _beforeState == eButtonState::press && _keepStateCount == 0;
 }
 
 bool Button::pressing() const
@@ -156,7 +158,7 @@ eButtonState Button::decideButtonState() const
 		int mouseInputCount = Mouse::getIns()->getPressingCount(MOUSE_INPUT_LEFT);
 		if (mouseInputCount == 1) {
 			for (auto func : _callFunctions) {
-				func(_buttonName);
+				func(name());
 			}
 			return eButtonState::press;
 		}

@@ -84,7 +84,6 @@ private:
 	std::vector<std::unique_ptr<ButtonDrawerInterface>> _drawers;
 	std::unique_ptr<Window> _window;
 
-	std::string _buttonName;
 	std::vector<std::function<void(const std::string&)>> _callFunctions;
 
 	eButtonState decideButtonState() const;

@@ -24,32 +24,37 @@ static Vector2 Vector2Div(const Vector2& v1, const Vector2& v2)
 
 
 //{left, top, width, height}
-static const Vector2 Selectbox_Window_Pos  {120.f, 450.f};
-static const Vector2 Selectbox_Window_Size {400.f, 400.f};
-static const Vector2 Preview_Window_Pos  {580.f, 200.f};
-static const Vector2 Preview_Window_Size {650.f, 650.f};
+static const Vector2 Right_Window_Pos  {580.f, 200.f};
+static const Vector2 Right_Window_Size {650.f, 650.f};
+static const Vector2 Left_Window_Pos {120.f, 200.f};
+static const Vector2 Left_Window_Size {400.f, 650.f};
 
 static const Vector2 Prev_Button_Pos  {20.f, 45.f};
 static const Vector2 Prev_Button_Size {230.f, 80.f};
 static const Vector2 Next_Button_Pos  {260.f, 45.f};
 static const Vector2 Next_Button_Size {230.f, 80.f};
-static const Vector2 StartSelection_Button_Pos  {120.f, 200.f};
-static const Vector2 StartSelection_Button_Size {400.f, 100.f};
-static const Vector2 ClearSelection_Button_Pos  {120.f, 310.f};
-static const Vector2 ClearSelection_Button_Size {400.f, 100.f};
 
+static const Vector2 StartSelection_Button_Pos  {130.f, 200.f};
+static const Vector2 StartSelection_Button_Size {380.f, 100.f};
+static const Vector2 ClearSelection_Button_Pos  {130.f, 310.f};
+static const Vector2 ClearSelection_Button_Size {380.f, 100.f};
+
+//敵艦選択ボタンの配置
 static const pair<int, int> Enemy_Button_Num_XY {4, 5};
-static const Vector2 Selectbox_Window_Grid_Size {Vector2Div(Selectbox_Window_Size, {static_cast<float>(Enemy_Button_Num_XY.first), static_cast<float>(Enemy_Button_Num_XY.second)})};
+static const Vector2 Selectbox_Div_Pos {130.f, 450.f};
+static const Vector2 Selectbox_Div_Size {380.f, 400.f};
 static const Vector2 Enemy_Button_Margin {4.f, 4.f};
+
+static const Vector2 Selectbox_Div_Grid_Size {Vector2Div(Selectbox_Div_Size, {static_cast<float>(Enemy_Button_Num_XY.first), static_cast<float>(Enemy_Button_Num_XY.second)})};
 
 Vector2 EnemySelectScene::calcEnemyButtonPos(int x, int y) const
 {
-	return Selectbox_Window_Pos + Enemy_Button_Margin + Vector2Mul(Selectbox_Window_Grid_Size, {static_cast<float>(x), static_cast<float>(y)});
+	return Selectbox_Div_Pos + Enemy_Button_Margin + Vector2Mul(Selectbox_Div_Grid_Size, {static_cast<float>(x), static_cast<float>(y)});
 }
 
 Vector2 EnemySelectScene::calcEnemyButtonSize() const
 {
-	return Selectbox_Window_Grid_Size - Enemy_Button_Margin * 2;
+	return Selectbox_Div_Grid_Size - Enemy_Button_Margin * 2;
 }
 void EnemySelectScene::createEnemyListButtons()
 {
@@ -77,7 +82,6 @@ void EnemySelectScene::setButtonImages()
 	nextButton.addDrawer(ButtonColor);
 	startSelectionButton.addDrawer(ButtonColor);
 	clearSelectionButton.addDrawer(ButtonColor);
-	removeLightningBgButton.addDrawer(ButtonColor); //debug
 
 	for (const auto& btncol : enemyListButtons) {
 		for (const auto& btn : btncol) {
@@ -89,12 +93,12 @@ void EnemySelectScene::setButtonImages()
 EnemySelectScene::EnemySelectScene(SceneChanger * impl, const Parameter & parameter) :
 	AbstractScene(impl, parameter),
 
-	isSelectMode {false},
+	isPreviewMode {true},
 
 	//{left, top}, {width, height}
 	backgroundWindow {{0.f, 0.f}, {static_cast<float>(Define::WIN_W), static_cast<float>(Define::WIN_H)}},
-	selectboxWindow {Selectbox_Window_Pos, Selectbox_Window_Size},
-	previewWindow {Preview_Window_Pos, Preview_Window_Size},
+	leftWindow {Left_Window_Pos, Left_Window_Size},
+	rightWindow {Right_Window_Pos, Right_Window_Size},
 
 	prevButton {"prevButton", Prev_Button_Pos, Prev_Button_Size},
 	nextButton {"nextButton", Next_Button_Pos, Next_Button_Size},
@@ -116,7 +120,6 @@ void EnemySelectScene::updateButtons()
 	nextButton.update();
 	startSelectionButton.update();
 	clearSelectionButton.update();
-	removeLightningBgButton.update(); //debug
 
 	for (const auto& btncol : enemyListButtons) {
 		for (const auto& btn : btncol) {
@@ -124,10 +127,6 @@ void EnemySelectScene::updateButtons()
 		}
 	}
 
-	if (!isLightningBgUnabled) { //debug
-		lightningBg.add();
-		lightningBg.update();
-	}
 }
 void EnemySelectScene::updateNextButtonEnableFlag()
 {
@@ -151,6 +150,23 @@ void EnemySelectScene::updateClearSelectionButtonEnableFlag()
 	}
 }
 
+void EnemySelectScene::goToNextScene()
+{
+	clsDx(); printfDx("\n「決定」まだ次のシーンのクラス名が分からないので遷移できません。\n");
+	Parameter palam {};
+	for (int i = 0; i < 5; ++i) {
+		palam.set("enemy" + to_string(i) + ".x", selectedEnemyPoss[i].first);
+		palam.set("enemy" + to_string(i) + ".y", selectedEnemyPoss[i].second);
+	}
+
+	//debug
+	printfDx("次のシーンへ渡されるパラメータ:\n");
+	for (int i = 0; i < 5; ++i) {
+		printfDx(("\"enemy" + to_string(i) + ".x\": %d\n").c_str(), palam.get("enemy" + to_string(i) + ".x"));
+		printfDx(("\"enemy" + to_string(i) + ".y\": %d\n").c_str(), palam.get("enemy" + to_string(i) + ".y"));
+	}
+	//_implSceneChanged->onSceneChanged(eScene::Title, palam, false);
+}
 
 void EnemySelectScene::doButtonEvents()
 {
@@ -158,23 +174,19 @@ void EnemySelectScene::doButtonEvents()
 		_implSceneChanged->onScenePoped();
 		clsDx(); printfDx("\n「戻る」\n");
 	}else if (nextButton.pressUp()) {
-		clsDx(); printfDx("\n「決定」このボタンは、次のシーンのクラス名が分かったら作ります。\n");
-		//_implSceneChanged->onSceneChanged(eScene::Title, {}, false);
+		goToNextScene();
 	}else if (startSelectionButton.pressUp()) {
-		isSelectMode = !isSelectMode;
+		isPreviewMode = !isPreviewMode;
 		selectedEnemyPoss.resize(0);
 		clsDx(); printfDx("\n「敵艦隊選択」5つのCPUの順序付き選択を開始。ボタンの名前を「敵艦隊選択中」に変更する。\n");
-		if (isSelectMode) {
-			printfDx("(現在は敵艦隊選択中です)\n");
-		} else {
+		if (isPreviewMode) {
 			printfDx("(現在は敵艦隊選択中ではありません。)\n");
+		} else {
+			printfDx("(現在は敵艦隊選択中です)\n");
 		}
 	}else if (clearSelectionButton.pressUp()) {
 		selectedEnemyPoss.resize(0);
 		clsDx(); printfDx("\n「艦隊選択クリア」\n");
-	}else if (removeLightningBgButton.pressUp()) { //debug
-		isLightningBgUnabled = !isLightningBgUnabled;
-		clsDx(); printfDx("\nこのボタンはデバッグ用です。\n");
 	} else {
 		for (int x = 0; x < enemyListButtons.size(); ++x) {
 			for (int y = 0; y < enemyListButtons[x].size(); ++y) {
@@ -190,14 +202,7 @@ void EnemySelectScene::doButtonEvents()
 void EnemySelectScene::doEnemyButtonEvent(int x, int y)
 {
 	auto p = find(selectedEnemyPoss.begin(), selectedEnemyPoss.end(), make_pair(x, y));
-	if (isSelectMode) {
-		//5個まで順序付きで選択
-		if (p != selectedEnemyPoss.end()) {
-			selectedEnemyPoss.erase(p);
-		} else if (selectedEnemyPoss.size() <= 4) {
-			selectedEnemyPoss.push_back(make_pair(x, y));
-		}
-	} else {
+	if (isPreviewMode) {
 		//0個または1個を選択
 		if (p != selectedEnemyPoss.end()) {
 			selectedEnemyPoss.resize(0);
@@ -207,6 +212,13 @@ void EnemySelectScene::doEnemyButtonEvent(int x, int y)
 			selectedEnemyPoss.push_back(make_pair(x, y));
 		}
 		clsDx(); printfDx("\n右側の枠に選択した艦隊の画像が表示される予定です。\n");
+	} else {
+		//5個まで順序付きで選択
+		if (p != selectedEnemyPoss.end()) {
+			selectedEnemyPoss.erase(p);
+		} else if (selectedEnemyPoss.size() <= 4) {
+			selectedEnemyPoss.push_back(make_pair(x, y));
+		}
 	}
 }
 
@@ -223,8 +235,8 @@ void EnemySelectScene::update()
 void EnemySelectScene::drawWindows() const
 {
 	backgroundWindow.draw();
-	selectboxWindow.draw();
-	previewWindow.draw();
+	leftWindow.draw();
+	rightWindow.draw();
 }
 
 void EnemySelectScene::drawButtons() const
@@ -233,7 +245,6 @@ void EnemySelectScene::drawButtons() const
 	nextButton.draw();
 	startSelectionButton.draw();
 	clearSelectionButton.draw();
-	removeLightningBgButton.draw(); //debug
 	for (const auto& btncol : enemyListButtons) {
 		for (const auto& btn : btncol) {
 			btn->draw();
@@ -245,21 +256,18 @@ void EnemySelectScene::drawButtons() const
 	for (int i = 0; i < selectedEnemyPoss.size(); ++i) {
 		const auto leftTop = calcEnemyButtonPos(selectedEnemyPoss[i].first, selectedEnemyPoss[i].second);
 		const auto rightBottom = leftTop + calcEnemyButtonSize();
-		if (isSelectMode) {
-			DrawExtendGraph(static_cast<int>(leftTop.x()), static_cast<int>(leftTop.y()),
-				static_cast<int>(rightBottom.x()), static_cast<int>(rightBottom.y()), Graphics::getIns()->getHandle("resource/image/enemy-select-scene/selected-" + to_string(i + 1) + ".png"), TRUE);
-		} else {
+		if (isPreviewMode) {
 			DrawExtendGraph(static_cast<int>(leftTop.x()), static_cast<int>(leftTop.y()),
 				static_cast<int>(rightBottom.x()), static_cast<int>(rightBottom.y()), Graphics::getIns()->getHandle("resource/image/UI/g1.png"), TRUE);
+		} else {
+			DrawExtendGraph(static_cast<int>(leftTop.x()), static_cast<int>(leftTop.y()),
+				static_cast<int>(rightBottom.x()), static_cast<int>(rightBottom.y()), Graphics::getIns()->getHandle("resource/image/enemy-select-scene/selected-" + to_string(i + 1) + ".png"), TRUE);
 		}
 	}
 }
 
 void EnemySelectScene::draw() const
 {
-	if (!isLightningBgUnabled) { //debug
-		lightningBg.draw();
-	}
 
 	drawWindows();
 	drawButtons();

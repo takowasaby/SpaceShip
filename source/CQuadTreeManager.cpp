@@ -43,6 +43,7 @@ void CQuadTreeManager::collisionJudge(DWORD judgeCellNum)
 
 void CQuadTreeManager::judgeSameCell(std::shared_ptr<ObjectForTree> oft)
 {
+	/* DEBUG(oguni) コンパイルエラーのためコメントアウト
 	for_each(
 		oft->_cellNum,
 		_trees[0]->getCellEnd(static_cast<DWORD>(oft->_cell)),
@@ -53,7 +54,7 @@ void CQuadTreeManager::judgeSameCell(std::shared_ptr<ObjectForTree> oft)
 				//
 			}
 		}
-	);
+	);*/
 }
 
 void CQuadTreeManager::judgeOtherTreeCell(std::shared_ptr<ObjectForTree> oft)

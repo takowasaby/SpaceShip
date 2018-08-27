@@ -10,7 +10,9 @@ void DummyScene::update()
 	Parameter parameter;
 	const bool stackClear = false;
 
-	_implSceneChanged->onSceneChanged(eScene::BattleBoard, parameter, stackClear);
+	//DEBUG(oguni)
+	//_implSceneChanged->onSceneChanged(eScene::BattleBoard, parameter, stackClear);
+	_implSceneChanged->onSceneChanged(eScene::EnemySelect, parameter, stackClear);
 
 	return;
 }

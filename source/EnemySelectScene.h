@@ -14,35 +14,45 @@ public:
 	virtual ~EnemySelectScene() = default;
 	void update() override;
 	void draw() const override;
+
 private:
-	bool isSelectMode; //5つ選ぶ方
+	bool isPreviewMode;
 
 	const Window backgroundWindow,
-	             selectboxWindow,
-	             previewWindow;
+	             leftWindow,
+	             rightWindow;
+
 	Button prevButton, 
 	       nextButton,
 	       startSelectionButton,
 	       clearSelectionButton;
 
+	//ボタンが押された状態でButton::enable()を実行するとボタンが押されていない状態になってしまうことへの対策。
+	bool isClearSelectionButtonEnabled;
+	bool isNextButtonEnabled;
+
 	std::vector<std::vector<std::unique_ptr<Button>>> enemyListButtons; //[x][y]
 	std::vector<std::pair<int, int>> selectedEnemyPoss;
 
 
-	//気分で作った電気的なエフェクトと、それを無効化するボタン
-	LightningBackground lightningBg {};
-	Button removeLightningBgButton {"removeLightningBgButton", {520.f, 45.f}, {230.f, 80.f}};
-	bool isLightningBgUnabled {};
+	Vector2 calcEnemyButtonPos(int x, int y) const;
+	Vector2 calcEnemyButtonSize() const;
 
+	void goToNextScene();
 
-
-	void createEnemyListButtons();
+	//初期化用
 	void setButtonImages();
+	void createEnemyListButtons();
+
+	//描画
+	void drawWindows() const;
+	void drawButtons() const;
+
+	//update
+	void updateNextButtonEnableFlag();
+	void updateClearSelectionButtonEnableFlag();
+
 	void updateButtons();
 	void doButtonEvents();
 	void doEnemyButtonEvent(int x, int y);
-	void drawWindows() const;
-	void drawButtons() const;
-	Vector2 calcEnemyButtonPos(int x, int y) const;
-	Vector2 calcEnemyButtonSize() const;
 };
